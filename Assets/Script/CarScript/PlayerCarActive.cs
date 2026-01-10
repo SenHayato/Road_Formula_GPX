@@ -203,7 +203,7 @@ public class PlayerCarActive : MonoBehaviour
         if (carModel.inSecondBoost)
         {
             maxSpeedNow = carModel.secondBoosMaxSpeed;
-            steeringPowerNow = 0f;
+            steeringPowerNow = 0.5f;
         }
         else
         {

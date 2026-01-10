@@ -13,21 +13,21 @@ public class BoostColliderScript : MonoBehaviour
     {
         carModel = GetComponentInParent<CarModel>();
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy"))
         {
+            Debug.Log("Kena Musuh Boost");
             int BumpGenerator = Random.Range(0, 2);
-            if (collision.collider.TryGetComponent<EnemyCarActive>(out var enemyCarActive))
+            if (collision.TryGetComponent<EnemyCarActive>(out var enemyCarActive))
             {
-                if (BumpGenerator == 0)
+                if (BumpGenerator == 3)
                 {
                     enemyCarActive.Explode();
                 }
                 else
                 {
-                    StartCoroutine(enemyCarActive.TakeDown());
+                    enemyCarActive.TakeDown();
                 }
             }
         }

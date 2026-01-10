@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8371344210152241416}
   - component: {fileID: 3757538824982582566}
   - component: {fileID: 4577285413990255572}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: NearMissCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5793753489626293548}
   - component: {fileID: 1347036447809870655}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Car 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2768222138306308943}
   - component: {fileID: 1208904576547172312}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Car 2 Shadow
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -279,7 +279,8 @@ GameObject:
   - component: {fileID: 7686107307936127963}
   - component: {fileID: 3676871866143097312}
   - component: {fileID: 345883320954445709}
-  m_Layer: 8
+  - component: {fileID: -5780446246452496267}
+  m_Layer: 6
   m_Name: Car (2)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -376,3 +377,30 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.34, y: 0.88}
   m_EdgeRadius: 0
+--- !u!50 &-5780446246452496267
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6592000500970967418}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

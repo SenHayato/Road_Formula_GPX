@@ -575,7 +575,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 173424162}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: RightBooster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1387,7 +1387,7 @@ GameObject:
   - component: {fileID: 266689481}
   - component: {fileID: 266689482}
   - component: {fileID: 266689484}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BoosterEffectL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5024,7 +5024,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1013700593}
   - component: {fileID: 1013700594}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: CarShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5112,7 +5112,7 @@ GameObject:
   - component: {fileID: 1016155791}
   - component: {fileID: 1016155793}
   - component: {fileID: 1016155792}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BoosterEffectR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5890,7 +5890,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1144219108}
   - component: {fileID: 1144219109}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: CarObj
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -6961,7 +6961,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1427787894}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Boost
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -9919,7 +9919,7 @@ GameObject:
   - component: {fileID: 1837615327}
   - component: {fileID: 1837615325}
   - component: {fileID: 1837615326}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Asurada Akf-0
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -10118,14 +10118,13 @@ GameObject:
   - component: {fileID: 1880440766}
   - component: {fileID: 1880440769}
   - component: {fileID: 1880440767}
-  - component: {fileID: 1880440768}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: BoostCollider
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1880440766
 Transform:
   m_ObjectHideFlags: 0
@@ -10157,7 +10156,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -10171,7 +10170,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -10191,33 +10190,6 @@ PolygonCollider2D:
       - {x: 13.587785, y: -11.809017}
       - {x: -13.587785, y: -11.809017}
   m_UseDelaunayMesh: 0
---- !u!50 &1880440768
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1880440765}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &1880440769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10231,7 +10203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoostColliderScript
   carModel: {fileID: 0}
-  isBoostingSize: {x: 0.5, y: 0.5, z: 0.5}
+  isBoostingSize: {x: 1, y: 1, z: 1}
   secondBoostSize: {x: 1, y: 1, z: 1}
 --- !u!1 &1897101860
 GameObject:
@@ -10673,7 +10645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1969751802}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: LeftBooster
   m_TagString: Untagged
   m_Icon: {fileID: 0}

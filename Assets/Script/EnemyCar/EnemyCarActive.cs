@@ -8,6 +8,7 @@ public class EnemyCarActive : MonoBehaviour
     [SerializeField] float defaultSpeed;
     [SerializeField] int damageValue;
     [SerializeField] float[] speedLevel;
+    [SerializeField] Rigidbody2D rigid2d;
 
     [Header("Enemy Status")]
     [SerializeField] bool canTurn;
@@ -29,6 +30,7 @@ public class EnemyCarActive : MonoBehaviour
         gameManager = FindFirstObjectByType<GameManager>();
         carModel = FindFirstObjectByType<CarModel>();
         playerCarActive = FindAnyObjectByType<PlayerCarActive>();
+        rigid2d = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -94,15 +96,18 @@ public class EnemyCarActive : MonoBehaviour
 
     public void Explode()
     {
-        Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        //Instantiate(explosionEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
-    public IEnumerator TakeDown()
+    bool isTakenDown = false;
+    Vector2 knockback = new(10,10);
+    public void TakeDown()
     {
-        while (true)
+        if (!isTakenDown)
         {
-            yield return null;
+            rigid2d.AddForce(100f * Time.deltaTime * knockback);
+            isTakenDown = true;
         }
     }
 

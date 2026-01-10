@@ -101,12 +101,15 @@ public class EnemyCarActive : MonoBehaviour
     }
 
     bool isTakenDown = false;
-    Vector2 knockback = new(10,10);
+    float knockAxisX = 10f;
+    float knockAxisY = 10f;
     public void TakeDown()
     {
         if (!isTakenDown)
         {
-            rigid2d.AddForce(100f * Time.deltaTime * knockback);
+            transform.position = new(transform.position.x, transform.position.y, -6);
+            Vector2 knockback = new(Random.Range(-knockAxisX, knockAxisX), knockAxisY);
+            rigid2d.AddForce(500f * Time.deltaTime * knockback);
             isTakenDown = true;
         }
     }

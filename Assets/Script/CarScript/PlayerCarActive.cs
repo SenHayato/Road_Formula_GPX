@@ -83,7 +83,7 @@ public class PlayerCarActive : MonoBehaviour
 
     public void BoostFillNearMiss()
     {
-        Debug.Log("Near Miss");
+        //Debug.Log("Near Miss");
 
         if (carModel.BoostGauge <= carModel.BoostMaxGauge && !carModel.isBoosting)
         {

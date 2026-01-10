@@ -9,6 +9,7 @@ public class EnemyCarActive : MonoBehaviour
     [SerializeField] int damageValue;
     [SerializeField] float[] speedLevel;
     [SerializeField] Rigidbody2D rigid2d;
+    [SerializeField] BoxCollider2D boxCollider;
 
     [Header("Enemy Status")]
     [SerializeField] bool canTurn;
@@ -31,6 +32,7 @@ public class EnemyCarActive : MonoBehaviour
         carModel = FindFirstObjectByType<CarModel>();
         playerCarActive = FindAnyObjectByType<PlayerCarActive>();
         rigid2d = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     private void Start()
@@ -101,16 +103,35 @@ public class EnemyCarActive : MonoBehaviour
     }
 
     bool isTakenDown = false;
+    float knockRotateSpeed = 200f;
     float knockAxisX = 10f;
     float knockAxisY = 10f;
     public void TakeDown()
     {
         if (!isTakenDown)
         {
+            boxCollider.enabled = false;
             transform.position = new(transform.position.x, transform.position.y, -6);
+            StartCoroutine(KnockRotation());
             Vector2 knockback = new(Random.Range(-knockAxisX, knockAxisX), knockAxisY);
             rigid2d.AddForce(500f * Time.deltaTime * knockback);
+            Invoke(nameof(Explode), Random.Range(1,3));
             isTakenDown = true;
+        }
+    }
+
+    IEnumerator KnockRotation()
+    {
+        int clockwiseRot = Random.Range(-1, 2); //random dari -1 sampai 1
+        if (clockwiseRot == 0)
+        {
+            clockwiseRot = 1;
+        }
+
+        while (true)
+        {
+            transform.rotation *= Quaternion.Euler(0, 0, clockwiseRot * knockRotateSpeed * Time.deltaTime);
+            yield return null;
         }
     }
 

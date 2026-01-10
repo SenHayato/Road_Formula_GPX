@@ -1090,7 +1090,7 @@ GameObject:
   - component: {fileID: 263148062}
   - component: {fileID: 263148063}
   - component: {fileID: 263148064}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BorderUp
   m_TagString: Border
   m_Icon: {fileID: 0}
@@ -1197,7 +1197,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -6079,7 +6079,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1148925975}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6477,7 +6477,7 @@ GameObject:
   - component: {fileID: 1304589163}
   - component: {fileID: 1304589162}
   - component: {fileID: 1304589161}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BorderDown
   m_TagString: Border
   m_Icon: {fileID: 0}

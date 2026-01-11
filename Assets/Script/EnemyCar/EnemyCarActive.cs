@@ -38,6 +38,7 @@ public class EnemyCarActive : MonoBehaviour
     private void Start()
     {
         EnemySpeedIncrease();
+        rigid2d.gravityScale = 0;
     }
 
     void NearMissActive()
@@ -104,12 +105,13 @@ public class EnemyCarActive : MonoBehaviour
 
     bool isTakenDown = false;
     float knockRotateSpeed = 200f;
-    float knockAxisX = 10f;
-    float knockAxisY = 10f;
+    float knockAxisX = 20f;
+    float knockAxisY = 30f;
     public void TakeDown()
     {
         if (!isTakenDown)
         {
+            rigid2d.gravityScale = 1.5f;
             boxCollider.enabled = false;
             transform.position = new(transform.position.x, transform.position.y, -6);
             StartCoroutine(KnockRotation());
@@ -143,7 +145,10 @@ public class EnemyCarActive : MonoBehaviour
 
     void Update()
     {
-        CarMoving();
+        if (!isTakenDown)
+        {
+            CarMoving();
+        }
         NearMissActive();
     }
 }

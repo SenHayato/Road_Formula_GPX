@@ -18,6 +18,7 @@ public class PlayerCarActive : MonoBehaviour
     [SerializeField] SpriteRenderer carRenderer;
     [SerializeField] SpriteRenderer shadowCarRenderer;
     [SerializeField] Rigidbody2D rigid2D;
+    [SerializeField] GameObject boostCollider;
 
     [Header("Player Car Level")]
     [SerializeField] int carLevel;
@@ -44,7 +45,6 @@ public class PlayerCarActive : MonoBehaviour
         gameManager = FindFirstObjectByType<GameManager>();
         carModel = GetComponentInParent<CarModel>();
         inputScript = FindFirstObjectByType<InputScript>();
-
         rigid2D = GetComponent<Rigidbody2D>();
     }
 
@@ -198,6 +198,11 @@ public class PlayerCarActive : MonoBehaviour
         }
     }
 
+    void BoostColliderToogle()
+    {
+        boostCollider.SetActive(carModel.isBoosting);
+    }
+
     void BoostSpeed()
     {
         if (carModel.inSecondBoost)
@@ -335,11 +340,16 @@ public class PlayerCarActive : MonoBehaviour
         }
     }
 
-    void CarDamageCap()
+    void CarMaxCap()
     {
         if (carModel.damagePoint > carModel.maxDamagePoint)
         {
             carModel.damagePoint = carModel.maxDamagePoint;
+        }
+
+        if (carModel.carFuel > carModel.maxCarFuel)
+        {
+            carModel.carFuel = carModel.maxCarFuel;
         }
     }
 
@@ -373,9 +383,10 @@ public class PlayerCarActive : MonoBehaviour
 
     void Update()
     {
+        
         //Setting
         CarLevelConfig();
-        CarDamageCap();
+        CarMaxCap();
 
         //Visual Effect
         CarVisualEffect();
@@ -383,6 +394,7 @@ public class PlayerCarActive : MonoBehaviour
         //Behaviour
         CarExploded();
         BoostMode();
+        BoostColliderToogle();
         if (carModel.canChangeAero)
         {
             ChangeForm();

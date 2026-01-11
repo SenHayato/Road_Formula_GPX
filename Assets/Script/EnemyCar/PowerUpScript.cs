@@ -4,6 +4,7 @@ public class PowerUpScript : MonoBehaviour
 {
     [Header("Power UP Properties")]
     [SerializeField] int RepairValue;
+    [SerializeField] int fuelValue;
     [SerializeField] float moveSpeed;
     [SerializeField] bool canTurn;
 
@@ -35,6 +36,7 @@ public class PowerUpScript : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             carModel.damagePoint += RepairValue;
+            carModel.carFuel += fuelValue;
             Destroy(gameObject);
         } else
         {

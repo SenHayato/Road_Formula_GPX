@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpScript
   RepairValue: 20
+  fuelValue: 10
   moveSpeed: 1
   canTurn: 0
   carModel: {fileID: 0}

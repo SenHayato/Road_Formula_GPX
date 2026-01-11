@@ -3187,7 +3187,7 @@ MonoBehaviour:
   - {fileID: 1765711452}
   - {fileID: 1025719564}
   - {fileID: 526877718}
-  spawnInterval: 5
+  spawnInterval: 2
   timeToSpawn: 0
   isSpawning: 0
   carRatesLevel: 0f000000140000002300000032000000

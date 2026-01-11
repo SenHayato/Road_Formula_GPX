@@ -105,7 +105,7 @@ public class PlayerCarActive : MonoBehaviour
     {
         while (true)
         {
-            carModel.carFuel -= 1f * Time.deltaTime;
+            carModel.carFuel -= 0.4f * Time.deltaTime;
             carModel.carFuel = Mathf.Clamp(carModel.carFuel, 0f, carModel.maxCarFuel);
 
             yield return null;

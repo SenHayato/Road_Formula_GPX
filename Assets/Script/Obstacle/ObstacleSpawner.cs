@@ -6,7 +6,7 @@ public class ObstacleSpawner : MonoBehaviour
     [Header("Object to Spawn")]
     [SerializeField] GameObject[] enemyCar;
     [SerializeField] GameObject enemyTruck;
-    [SerializeField] GameObject powerUp;
+    [SerializeField] GameObject[] powerUps;
 
     [Header("SpawnerProperties")]
     [SerializeField] Transform[] spawnerPoint; //diurutakan dari spawner pertama
@@ -97,8 +97,9 @@ public class ObstacleSpawner : MonoBehaviour
     {
         if (Random.Range(0, 100) <= powerUpRate)
         {
+            int powerUpItem = Random.Range(0, 2);
             int positionNum = Random.Range(0, spawnerPoint.Length);
-            Instantiate(powerUp, spawnerPoint[positionNum].position, Quaternion.identity);
+            Instantiate(powerUps[powerUpItem], spawnerPoint[positionNum].position, Quaternion.identity);
         }
     }
 

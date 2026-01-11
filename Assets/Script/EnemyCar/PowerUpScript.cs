@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class PowerUpScript : MonoBehaviour
 {
+    [SerializeField] PowerType powerType;
+
     [Header("Power UP Properties")]
-    [SerializeField] int RepairValue;
+    [SerializeField] int repairValue;
     [SerializeField] int fuelValue;
     [SerializeField] float moveSpeed;
     [SerializeField] bool canTurn;
@@ -35,13 +37,18 @@ public class PowerUpScript : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            carModel.damagePoint += RepairValue;
-            carModel.carFuel += fuelValue;
-            Destroy(gameObject);
-        } else
-        {
-            Destroy(gameObject);
+            switch (powerType)
+            {
+                case PowerType.DamagePointUp:
+                    carModel.damagePoint += repairValue;
+                    break;
+                case PowerType.CarFuelFill:
+                    carModel.carFuel += fuelValue;
+                    break;
+            }
         }
+
+        Destroy(gameObject);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -61,5 +68,10 @@ public class PowerUpScript : MonoBehaviour
     private void Update()
     {
         PowerUpMoving();
+    }
+
+    private enum PowerType
+    {
+        DamagePointUp, CarFuelFill,
     }
 }

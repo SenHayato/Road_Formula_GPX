@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6199371372826987503}
   - component: {fileID: 3972917189571622685}
   m_Layer: 7
-  m_Name: PowerUp
+  m_Name: CarFuelFill
   m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c210f045da68545ad218265bdf3a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpScript
-  RepairValue: 20
-  fuelValue: 10
+  powerType: 1
+  repairValue: 30
+  fuelValue: 30
   moveSpeed: 1
   canTurn: 0
   carModel: {fileID: 0}
@@ -174,7 +175,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -8268722766844577035, guid: 3f086f1d7af1da9478bda9c3efd3e879, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.6933656, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

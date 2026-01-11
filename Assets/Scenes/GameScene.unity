@@ -3137,7 +3137,7 @@ GameObject:
   - component: {fileID: 595640208}
   - component: {fileID: 595640209}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: SpawnerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3180,7 +3180,9 @@ MonoBehaviour:
   - {fileID: 6592000500970967418, guid: 2e72c4267490c0940a2e398f9ace889a, type: 3}
   - {fileID: 7702254813176466362, guid: 4c9ce7c0cb330104f8b1e9a7a2154f56, type: 3}
   enemyTruck: {fileID: 2701923654670827295, guid: 5853ccab8fcfe6f4398c51bb8c8280f7, type: 3}
-  powerUp: {fileID: 2674415206858555492, guid: 43f0cf10a2412ef40b6bd12532f18368, type: 3}
+  powerUps:
+  - {fileID: 2674415206858555492, guid: 43f0cf10a2412ef40b6bd12532f18368, type: 3}
+  - {fileID: 2674415206858555492, guid: ec080a85021fe3e4c9542be6e4a9f54e, type: 3}
   spawnerPoint:
   - {fileID: 2123255959}
   - {fileID: 429460560}
@@ -3192,7 +3194,7 @@ MonoBehaviour:
   isSpawning: 0
   carRatesLevel: 0f000000140000002300000032000000
   truckRateLevel: 000000000a0000001400000023000000
-  powerUpRate: 15
+  powerUpRate: 40
   carModel: {fileID: 0}
   gameManager: {fileID: 0}
 --- !u!1 &603925245
@@ -10325,7 +10327,7 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -2.1}
+  m_Offset: {x: 0, y: -0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -10337,9 +10339,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 26.3}
-      - {x: 13.587785, y: -11.809017}
-      - {x: -13.587785, y: -11.809017}
+    - - {x: 0, y: 25}
+      - {x: 16, y: -11.809017}
+      - {x: -16, y: -11.809017}
   m_UseDelaunayMesh: 0
 --- !u!114 &1880440769
 MonoBehaviour:

@@ -4,11 +4,18 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager Instance { get; private set; }
 
-    [Header("Game Music List")]
-    [SerializeField] AudioClip[] musicClip;
+    [Header("BGM List")]
+    [SerializeField] int bgmNumber;  //nilai bisa di kurangi satu untuk menyesuaikan dengan Array list BGM
+    [SerializeField] AudioClip[] bgmClips;
+
+    [Header("BGM Condition")]
+    [SerializeField] bool isBGMPlaying = false;
+    [SerializeField] bool isBGMRandom = true;
+
+    [Header("SFX Library")]
+    [SerializeField] AudioClip[] sfxClips;
 
     [Header("Audio Component")]
-    [SerializeField] bool isPlaying = false;
     [SerializeField] AudioSource musicSource;
 
 

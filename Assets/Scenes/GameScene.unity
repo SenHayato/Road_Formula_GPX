@@ -5127,8 +5127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70381ff1ff20e544fadc60bb892a353c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicClip: []
-  isPlaying: 0
+  bgmNumber: 0
+  bgmClips: []
+  isBGMPlaying: 0
+  isBGMRandom: 0
+  sfxClips: []
   musicSource: {fileID: 0}
 --- !u!1 &1013700592
 GameObject:
@@ -7367,6 +7370,15 @@ MonoBehaviour:
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 369edc94-16c3-4961-a7d2-47da22c55020
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  changeMusic:
+    m_Name: Change Music
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 57eeceaf-6f16-4cd9-a221-1b2bb76af4a6
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []

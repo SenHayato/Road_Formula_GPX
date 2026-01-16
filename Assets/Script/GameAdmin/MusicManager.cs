@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
+    public static MusicManager Instance { get; private set; }
+
     [Header("Game Music List")]
     [SerializeField] AudioClip[] musicClip;
 
@@ -9,9 +11,19 @@ public class MusicManager : MonoBehaviour
     [SerializeField] bool isPlaying = false;
     [SerializeField] AudioSource musicSource;
 
+
     void Awake()
     {
-        musicSource = GetComponent<AudioSource>();
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+
+        //musicSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -19,9 +31,9 @@ public class MusicManager : MonoBehaviour
 
     }
 
-    void MusicPlayList()
+    public void MusicPlayList()
     {
-
+        //Debug.Log("Test Music");
     }
 
     void Update()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCarActive : MonoBehaviour
 {
-    public static PlayerCarActive PlayerActive { get; private set; }
+    public static PlayerCarActive Instance { get; private set; }
 
     [Header("Player Car Condition")]
     public bool carExplode = false;
@@ -33,13 +33,13 @@ public class PlayerCarActive : MonoBehaviour
 
     void Awake()
     {
-        if (PlayerActive != null && PlayerActive != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
         else
         {
-            PlayerActive = this;
+            Instance = this;
         }
 
         gameManager = FindFirstObjectByType<GameManager>();

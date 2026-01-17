@@ -137,13 +137,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCarActive
   moveSpeed: 1
+  maxSpeed: 0
   defaultSpeed: 1
   damageValue: 10
-  speedLevel:
+  maxSpeedLevel:
   - 0
   - 0
   - 0
   - 0
+  rigid2d: {fileID: 0}
+  boxCollider: {fileID: 0}
   canTurn: 0
   isExploded: 0
   isBumped: 0

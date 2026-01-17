@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         GameOver();
-        UpgradeLevel();
+        //UpgradeLevel();
         ScoreCount();
 
         if (!gameOver)

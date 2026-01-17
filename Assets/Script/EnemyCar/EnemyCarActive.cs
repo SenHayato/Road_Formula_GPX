@@ -4,12 +4,14 @@ using UnityEngine;
 public class EnemyCarActive : MonoBehaviour
 {
     [Header("Enemy Component")]
-    [SerializeField] float moveSpeed;
+    float moveSpeed;
+    [SerializeField] float maxSpeed;
     [SerializeField] float defaultSpeed;
     [SerializeField] int damageValue;
-    [SerializeField] float[] speedLevel;
+    [SerializeField] float[] maxSpeedLevel;
     [SerializeField] Rigidbody2D rigid2d;
     [SerializeField] BoxCollider2D boxCollider;
+    float carAcceleration;
 
     [Header("Enemy Status")]
     [SerializeField] bool canTurn;
@@ -39,6 +41,7 @@ public class EnemyCarActive : MonoBehaviour
     {
         EnemySpeedIncrease();
         rigid2d.gravityScale = 0;
+        carAcceleration = carModel.carAcceleration;
     }
 
     void NearMissActive()
@@ -55,27 +58,58 @@ public class EnemyCarActive : MonoBehaviour
 
     void EnemySpeedIncrease()
     {
-        speedLevel[0] = defaultSpeed;
+        maxSpeedLevel[0] = defaultSpeed;
         for (int i = 1; i < gameManager.gameMaxLevel + 1; i++)
         {
-            speedLevel[i] = speedLevel[i - 1] + 0.6f;
+            maxSpeedLevel[i] = maxSpeedLevel[i - 1] + 0.6f;
         }
     }
-    
+
+    void MaxSpeedIncrease()
+    {
+        maxSpeed = maxSpeedLevel[gameManager.gameLevel];
+    }
+
+    float maxSpeedNow;
     void CarMoving()
     {
-        float carMoving;
-        moveSpeed = speedLevel[gameManager.gameLevel];
+        maxSpeedNow = maxSpeed;
+
         if (carModel.carSpeed > 0.45f)
         {
-            carMoving = -moveSpeed * Time.deltaTime;
+            if (!carModel.inAeroMode)
+            {
+                moveSpeed = -carAcceleration * Time.deltaTime;
+            }
+            else
+            {
+                moveSpeed = -(carAcceleration + 1.5f) * Time.deltaTime;
+            }
         }
         else
         {
-            carMoving = (moveSpeed + 15f) * Time.deltaTime;
+            moveSpeed = 15f * Time.deltaTime;
         }
 
-        transform.position += new Vector3(0f, carMoving, 0);
+        if (carModel.isBoosting)
+        {
+            PlayerBoostSpeed();
+        }
+
+        moveSpeed = Mathf.MoveTowards(moveSpeed, Mathf.Clamp(moveSpeed, -10f, maxSpeedNow), 5f * Time.deltaTime);
+        transform.position += new Vector3(0f, moveSpeed, 0);
+    }
+
+    void PlayerBoostSpeed()
+    {
+        if (carModel.inSecondBoost)
+        {
+
+        }
+        else
+        {
+
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -145,10 +179,12 @@ public class EnemyCarActive : MonoBehaviour
 
     void Update()
     {
+        MaxSpeedIncrease();
+        NearMissActive();
+
         if (!isTakenDown)
         {
             CarMoving();
         }
-        NearMissActive();
     }
 }

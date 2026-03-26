@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class MusicManager : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
-    public static MusicManager Instance { get; private set; }
+    public static SoundManager Instance { get; private set; }
 
     [Header("BGM List")]
     [SerializeField] int bgmNumber;  //nilai bisa di kurangi satu untuk menyesuaikan dengan Array list BGM

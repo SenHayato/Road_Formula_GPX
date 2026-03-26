@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            MusicManager.Instance.MusicPlayList();
+            SoundManager.Instance.MusicPlayList();
             //if (MusicManager.Instance != null)
             //{
                 

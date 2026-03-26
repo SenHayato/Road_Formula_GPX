@@ -116,6 +116,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Arrow",
+                    "id": "9bc1e0c0-7416-45a3-81d1-9e0caa6d24ee",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steer",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "095eab3c-feec-4468-a3b7-518fbd22f010",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Steer",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "e7971389-3c0b-405e-9907-3be991e57518",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Steer",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "9acceee7-fd98-4f3d-b74f-f74b5553c301",
                     "path": "<Gamepad>/rightTrigger",
@@ -150,6 +183,17 @@
                 },
                 {
                     "name": "",
+                    "id": "d42813c5-2461-4fa0-a809-22eb4a5fe0ed",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Gas",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d1a5f194-f510-4c88-9551-ee511f395444",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
@@ -174,6 +218,17 @@
                     "name": "",
                     "id": "abcd26cf-9af2-4d2f-96a4-5d2b99bac34e",
                     "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Brake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d48febf5-c1a2-45d9-9070-76bc99edd847",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",

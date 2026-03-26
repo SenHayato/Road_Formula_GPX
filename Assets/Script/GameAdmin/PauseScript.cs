@@ -15,6 +15,7 @@ public class PauseScript : MonoBehaviour
     [Header("Reference")]
     [SerializeField] InputScript inputScript;
     [SerializeField] GameManager gameManager;
+    [SerializeField] OptionManager optionManager;
 
     private void Awake()
     {
@@ -31,6 +32,9 @@ public class PauseScript : MonoBehaviour
 
         inputScript = FindFirstObjectByType<InputScript>();
         gameManager = FindFirstObjectByType<GameManager>();
+
+        optionManager = FindFirstObjectByType<OptionManager>(FindObjectsInactive.Include);
+
     }
 
     void PauseButton()
@@ -76,7 +80,7 @@ public class PauseScript : MonoBehaviour
 
     public void OptionButton()
     {
-        //munculkan option screen
+        optionManager.EnableOption();
     }
 
     public void BackToMainMenu()

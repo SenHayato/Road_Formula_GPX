@@ -202,10 +202,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1311895212}
   m_HandleRect: {fileID: 1761032613}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -293,7 +293,6 @@ GameObject:
   m_Component:
   - component: {fileID: 228111636}
   - component: {fileID: 228111639}
-  - component: {fileID: 228111640}
   - component: {fileID: 228111635}
   - component: {fileID: 228111634}
   - component: {fileID: 228111633}
@@ -442,23 +441,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9679a76e78e999942a8b2389b716dfdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionScene: {fileID: 1000993709}
   loadingScreen: {fileID: 1966015093}
---- !u!114 &228111640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 228111632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 635d8f4e140a2e04c8bf72c58745b69b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bgmSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
-  optionScreen: {fileID: 1000993709}
+  optionManager: {fileID: 0}
 --- !u!1 &236657364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,6 +1229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1000993713}
+  - component: {fileID: 1000993716}
   - component: {fileID: 1000993712}
   - component: {fileID: 1000993711}
   - component: {fileID: 1000993710}
@@ -1256,7 +1241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1000993710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1381,6 +1366,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000993709}
   m_CullTransparentMesh: 1
+--- !u!114 &1000993716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000993709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fbf33f08fdbbbd43864dbedfae696da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmVolumeSlider: {fileID: 2032167954}
+  sfxVolumeSlider: {fileID: 79175773}
+  bgmMixer: {fileID: 24100000, guid: 37a1ce292188d3b4c8da0ae80dce459e, type: 2}
+  sfxMixer: {fileID: 24100000, guid: c224a459fcbe381428043410d22786dc, type: 2}
 --- !u!1 &1059010066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1884,7 +1885,7 @@ RectTransform:
   m_Father: {fileID: 330961008}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2318,7 +2319,7 @@ RectTransform:
   m_Father: {fileID: 2060631306}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2604,8 +2605,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1059010067}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3107,8 +3108,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1502993213}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3233,10 +3234,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1714171743}
   m_HandleRect: {fileID: 2022802835}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3358,9 +3359,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 228111640}
-        m_TargetAssemblyTypeName: OptionScript, Assembly-CSharp
-        m_MethodName: BackButton
+      - m_Target: {fileID: 1000993716}
+        m_TargetAssemblyTypeName: OptionManager, Assembly-CSharp
+        m_MethodName: DisableOption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

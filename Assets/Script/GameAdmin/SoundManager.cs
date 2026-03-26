@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class SoundManager : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("Audio Component")]
     [SerializeField] AudioSource musicSource;
-
+    [SerializeField] AudioSource sfxSource;
 
     void Awake()
     {

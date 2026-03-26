@@ -1,12 +1,15 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
     public static MainMenuManager instance;
 
     [Header("Window Screen")]
-    [SerializeField] GameObject optionScene;
     [SerializeField] GameObject loadingScreen;
+
+    [Header("Reference")]
+    [SerializeField] OptionManager optionManager;
 
     //[Header("Referenece")]
     private void Awake()
@@ -19,24 +22,27 @@ public class MainMenuManager : MonoBehaviour
         {
             instance = this;
         }
+
+        optionManager = FindFirstObjectByType<OptionManager>(FindObjectsInactive.Include);
     }
 
     void Start()
     {
-        
+        DontDestroyOnLoad(optionManager);
     }
 
     #region MainMenuButton
 
     public void GameStartButton()
     {
-        loadingScreen.SetActive(true);
+        //loadingScreen.SetActive(true);
+        SceneManager.LoadScene("GameScene");
         //di loading screen, load scene game
     }
 
     public void OptionButton()
     {
-        optionScene.SetActive(true);
+        optionManager.EnableOption();
     }
 
     public void ExitButton() //keluar aplikasi

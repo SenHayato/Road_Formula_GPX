@@ -38,9 +38,4 @@ public class LoadingScript : MonoBehaviour
             yield return null;
         }
     }
-
-    void Update()
-    {
-        
-    }
 }

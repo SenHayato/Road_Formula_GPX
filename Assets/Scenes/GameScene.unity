@@ -2455,7 +2455,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 503397972}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1481724152}
+        m_TargetAssemblyTypeName: LoadingScript, Assembly-CSharp
+        m_MethodName: LoadingToScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenuScene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &503397972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3916,7 +3928,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 657785607}
-  - component: {fileID: 657785606}
   - component: {fileID: 657785605}
   - component: {fileID: 657785604}
   - component: {fileID: 657785603}
@@ -4028,21 +4039,8 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_TargetDisplay: 0
---- !u!114 &657785606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 657785600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d615853f8e3378f40802ae744354e8bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loadingBar: {fileID: 1306753450}
 --- !u!224 &657785607
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7420,6 +7418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1481724148}
   - component: {fileID: 1481724151}
+  - component: {fileID: 1481724152}
   - component: {fileID: 1481724150}
   - component: {fileID: 1481724149}
   m_Layer: 0
@@ -7581,6 +7580,20 @@ MonoBehaviour:
   playerInput: {fileID: 0}
   resultScreenScript: {fileID: 0}
   playerCarActive: {fileID: 0}
+--- !u!114 &1481724152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481724147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d615853f8e3378f40802ae744354e8bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingBar: {fileID: 1306753450}
+  loadingCanvas: {fileID: 657785600}
 --- !u!1 &1499405573
 GameObject:
   m_ObjectHideFlags: 0
@@ -11896,6 +11909,7 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 431450295}
   - {fileID: 1481724148}
+  - {fileID: 657785607}
   - {fileID: 1010628890}
   - {fileID: 619394802}
   - {fileID: 1076118530}
@@ -11906,4 +11920,3 @@ SceneRoots:
   - {fileID: 1837615324}
   - {fileID: 1148925975}
   - {fileID: 595640208}
-  - {fileID: 657785607}

@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -7,11 +9,14 @@ public class MainMenuManager : MonoBehaviour
 
     [Header("Window Screen")]
     [SerializeField] GameObject loadingScreen;
+    [SerializeField] Animation mainMenuAnimation;
+    [SerializeField] Animation titleMenuAnimation;
 
     [Header("Reference")]
     [SerializeField] OptionManager optionManager;
+    [SerializeField] PlayerInput playerInput;
+    private InputAction anyKeyAction;
 
-    //[Header("Referenece")]
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -24,11 +29,29 @@ public class MainMenuManager : MonoBehaviour
         }
 
         optionManager = FindFirstObjectByType<OptionManager>(FindObjectsInactive.Include);
+        playerInput = FindFirstObjectByType<PlayerInput>();
+        anyKeyAction = playerInput.actions.FindAction("Anykey");
     }
 
     void Start()
     {
         DontDestroyOnLoad(optionManager);
+        StartCoroutine(OnAnykey());
+    }
+
+    IEnumerator OnAnykey()
+    {
+        while (true)
+        {
+            if (anyKeyAction.triggered)
+            {
+                Debug.Log("Any Key");
+                mainMenuAnimation.Play();
+                yield break; // keluar
+            }
+
+            yield return null; // tunggu frame
+        }
     }
 
     #region MainMenuButton

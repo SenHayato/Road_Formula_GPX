@@ -8154,7 +8154,7 @@ GameObject:
   - component: {fileID: 1575428995}
   - component: {fileID: 1575428996}
   m_Layer: 5
-  m_Name: DialogueUI
+  m_Name: DialogueHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8177,7 +8177,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 469, y: -265.38}
-  m_SizeDelta: {x: 505.7455, y: 196.5325}
+  m_SizeDelta: {x: 367, y: 206}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1575428993
 MonoBehaviour:
@@ -10448,9 +10448,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5a5ba1dd77f754d9e70d4fa6ee4d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  driverDefault: {fileID: 0}
-  driverPanic: {fileID: 0}
-  driverMad: {fileID: 0}
+  driverDefault: {fileID: 21300000, guid: f64896be1eb505147a31c6f5ebfa7fe2, type: 3}
+  driverPanic: {fileID: 21300000, guid: 349036acde56c4f49aa8c6ac7c6d85d9, type: 3}
+  driverMad: {fileID: 21300000, guid: 62b1b5a8418a9b94380d18d9a53a4509, type: 3}
   voiceDefault: []
 --- !u!1 &1880440765
 GameObject:

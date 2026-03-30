@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Timeline;
 
@@ -36,7 +38,7 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-
+        
     }
 
     public void MusicPlayList()
@@ -44,8 +46,21 @@ public class SoundManager : MonoBehaviour
         //Debug.Log("Test Music");
     }
 
+
+    #region Test UniTask
+    public int second;
+    public async UniTask TestUni()
+    {
+        transform.position = Vector3.up * 8f * Time.deltaTime;
+        await UniTask.Delay(second * 1000); //pengganti yield return new WaitforSeconds
+        transform.position = Vector3.zero;
+
+        return; //pengganti yield break;
+    }
+    #endregion
+
     void Update()
     {
-        
+        TestUni().Forget();
     }
 }

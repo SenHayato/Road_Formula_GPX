@@ -5274,6 +5274,7 @@ MonoBehaviour:
   sfxClips: []
   musicSource: {fileID: 1010628891}
   sfxSource: {fileID: 139349669}
+  second: 1000
 --- !u!1 &1013700592
 GameObject:
   m_ObjectHideFlags: 0

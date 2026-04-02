@@ -10305,6 +10305,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   gameManager: {fileID: 0}
+  dialogueScript: {fileID: 0}
 --- !u!114 &1837615323
 MonoBehaviour:
   m_ObjectHideFlags: 0

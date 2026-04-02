@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4577285413990255572}
   m_Layer: 6
   m_Name: NearMissCollider
-  m_TagString: Untagged
+  m_TagString: EnemyNearMiss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -315,7 +315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69163d244f1774d44b08661e7466a7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCarActive
-  moveSpeed: 1
   maxSpeed: 0
   defaultSpeed: 1
   damageValue: 10

@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -30,6 +31,7 @@ public class PlayerCarActive : MonoBehaviour
 
     [Header("Reference")]
     [SerializeField] GameManager gameManager;
+    [SerializeField] DialogueScript dialogueScript;
 
     void Awake()
     {
@@ -46,6 +48,7 @@ public class PlayerCarActive : MonoBehaviour
         carModel = GetComponentInParent<CarModel>();
         inputScript = FindFirstObjectByType<InputScript>();
         rigid2D = GetComponent<Rigidbody2D>();
+        dialogueScript = FindFirstObjectByType<DialogueScript>();
     }
 
     void Start()
@@ -66,6 +69,17 @@ public class PlayerCarActive : MonoBehaviour
 
         Invoke(nameof(CarFuel), 4.2f); //sesuaikan dengan countdown
     }
+
+    #region Collision Method
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("EnemyNearMiss") || collision.CompareTag("PowerUp"))
+        {
+            dialogueScript.DialogueSetUp(CarDriver.DriverReaction.Default);
+        }
+    }
+
+    #endregion
 
     void MaxSpeedIncrease()
     {
@@ -227,6 +241,7 @@ public class PlayerCarActive : MonoBehaviour
                 if (carModel.inAeroMode)
                 {
                     carModel.isBoosting = true;
+                    dialogueScript.DialogueSetUp(CarDriver.DriverReaction.Mad);
                     if (carModel.canSecondBoost)
                     {
                         carModel.secondBoostCount = 3.99f;
@@ -284,6 +299,7 @@ public class PlayerCarActive : MonoBehaviour
         {
             if (carModel.isBoosting)
             {
+                dialogueScript.DialogueSetUp(CarDriver.DriverReaction.Default);
                 carModel.inSecondBoost = true;
                 secondBoostReady = false;
             }
@@ -327,6 +343,7 @@ public class PlayerCarActive : MonoBehaviour
     {
         if (!carExplode && !carModel.isBoosting)
         {
+            dialogueScript.DialogueSetUp(CarDriver.DriverReaction.Panic);
             carModel.damagePoint -= damage;
         }
     }
@@ -335,6 +352,7 @@ public class PlayerCarActive : MonoBehaviour
     {
         if (carModel.damagePoint <= 0)
         {
+            dialogueScript.DialogueSetUp(CarDriver.DriverReaction.Panic);
             carExplode = true;
             carModel.damagePoint = 0; //sementara
         }

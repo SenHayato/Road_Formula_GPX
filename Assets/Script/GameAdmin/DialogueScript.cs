@@ -10,7 +10,7 @@ public class DialogueScript : MonoBehaviour
     [SerializeField] AudioSource driverVoice;
 
     [Header("Dialogue Component")]
-    [SerializeField] bool isActive = false;
+    public bool isActive;
     [SerializeField] Animation dialAnimation;
 
     [Header("Reference")]
@@ -23,25 +23,31 @@ public class DialogueScript : MonoBehaviour
 
     void Start()
     {
-
+        isActive = false;
     }
 
     public void DialogueSetUp(CarDriver.DriverReaction driverReaction)
     {
-        driverPicture.sprite = driverReaction switch
+        if (!isActive)
         {
-            CarDriver.DriverReaction.Default => carDriver.driverDefault,
-            CarDriver.DriverReaction.Panic => carDriver.driverPanic,
-            CarDriver.DriverReaction.Mad => carDriver.driverMad,
-            _ => carDriver.driverDefault
-        };
+            driverPicture.sprite = driverReaction switch
+            {
+                CarDriver.DriverReaction.Default => carDriver.driverDefault,
+                CarDriver.DriverReaction.Panic => carDriver.driverPanic,
+                CarDriver.DriverReaction.Mad => carDriver.driverMad,
+                _ => carDriver.driverDefault
+            };
+
+            StartCoroutine(DialogueEnable());
+        }
+       
     }
 
     IEnumerator DialogueEnable()
     {
         DialogueOn();
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         DialogueOff();
     }
@@ -50,19 +56,21 @@ public class DialogueScript : MonoBehaviour
     {
         Debug.Log("Dial In");
         isActive = true;
+        dialAnimation.Play("DialogueIn");
     }
 
     void DialogueOff()
     {
         Debug.Log("Dial Out");
+        dialAnimation.Play("DialogueOut");
         isActive = false;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            StartCoroutine(DialogueEnable());
-        }
-    }
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.L))
+    //    {
+    //        StartCoroutine(DialogueEnable());
+    //    }
+    //}
 }

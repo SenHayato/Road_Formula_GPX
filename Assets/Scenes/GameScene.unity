@@ -5272,6 +5272,7 @@ MonoBehaviour:
   isBGMPlaying: 0
   isBGMRandom: 0
   sfxClips: []
+  crashImpactClips: []
   musicSource: {fileID: 1010628891}
   sfxSource: {fileID: 139349669}
   second: 1000

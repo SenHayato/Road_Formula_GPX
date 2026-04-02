@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0f694c7fd0be6004ca17b46e22e54721
+timeCreated: 1461247634
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 68940
+  packageName: FC Audio Tools Free Edition
+  packageVersion: 2.3.2
+  assetPath: Assets/FCAudioTools/Demo/Sounds/AnimationClip/SampleMusic4beat.anim
+  uploadId: 490921

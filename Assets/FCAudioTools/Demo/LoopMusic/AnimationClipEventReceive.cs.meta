@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 923a9959ac73fb44abc4c0879e031427
+timeCreated: 1460043756
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 68940
+  packageName: FC Audio Tools Free Edition
+  packageVersion: 2.3.2
+  assetPath: Assets/FCAudioTools/Demo/LoopMusic/AnimationClipEventReceive.cs
+  uploadId: 490921

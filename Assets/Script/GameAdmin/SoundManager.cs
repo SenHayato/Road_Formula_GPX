@@ -18,6 +18,9 @@ public class SoundManager : MonoBehaviour
     [Header("SFX Library")]
     [SerializeField] AudioClip[] sfxClips;
 
+    [Header("Car Crash Impact Library Sound")]
+    [SerializeField] AudioClip[] crashImpactClips;
+
     [Header("Audio Component")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource sfxSource;

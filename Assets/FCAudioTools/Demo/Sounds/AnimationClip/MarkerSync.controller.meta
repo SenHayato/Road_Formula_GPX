@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f29264f4867e6cc4cb02e793151ff3ad
+timeCreated: 1460045043
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 68940
+  packageName: FC Audio Tools Free Edition
+  packageVersion: 2.3.2
+  assetPath: Assets/FCAudioTools/Demo/Sounds/AnimationClip/MarkerSync.controller
+  uploadId: 490921

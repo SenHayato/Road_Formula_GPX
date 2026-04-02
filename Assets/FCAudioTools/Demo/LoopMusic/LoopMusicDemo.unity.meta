@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 819c2ac1787f75149a7d7d8188dbd3fb
+timeCreated: 1429069596
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 68940
+  packageName: FC Audio Tools Free Edition
+  packageVersion: 2.3.2
+  assetPath: Assets/FCAudioTools/Demo/LoopMusic/LoopMusicDemo.unity
+  uploadId: 490921

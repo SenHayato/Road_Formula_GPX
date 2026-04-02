@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerCarActive : MonoBehaviour
@@ -348,6 +349,34 @@ public class PlayerCarActive : MonoBehaviour
         }
     }
 
+    bool isKnocked = false;
+    public void TakeKnockBack(float knockedPower)
+    {
+        if (!isKnocked && !carModel.isBoosting)
+        {
+            isKnocked = true;
+            StartCoroutine(KnockBack(knockedPower));
+        }
+    }
+
+    IEnumerator KnockBack(float knockPower)
+    {
+        if (!isKnocked) yield break;
+
+        Vector3 knockDirection = new Vector3(knockPower, 0f, 0f);
+        float duration = 0.2f;
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            transform.position += carModel.carSpeed * Time.deltaTime * knockDirection;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        isKnocked = false;
+    }
+
     void CarExploded()
     {
         if (carModel.damagePoint <= 0)
@@ -418,6 +447,10 @@ public class PlayerCarActive : MonoBehaviour
             ChangeForm();
         }
         CarAcceleration();
-        CarSteering();
+
+        if (!isKnocked)
+        {
+            CarSteering();
+        }
     }
 }

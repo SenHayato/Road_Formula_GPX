@@ -54,7 +54,7 @@ public class SoundManager : MonoBehaviour
     public int second;
     public async UniTask TestUni()
     {
-        transform.position = Vector3.up * 8f * Time.deltaTime;
+        transform.position = 8f * Time.deltaTime * Vector3.up;
         await UniTask.Delay(second * 1000); //pengganti yield return new WaitforSeconds
         transform.position = Vector3.zero;
 

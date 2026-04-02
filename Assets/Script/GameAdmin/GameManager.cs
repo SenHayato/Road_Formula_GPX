@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
 
-        resultScreenScript = FindFirstObjectByType<ResultScreenScript>();
+        resultScreenScript = FindFirstObjectByType<ResultScreenScript>(FindObjectsInactive.Include);
         playerInput = GetComponent<PlayerInput>();
         carModel = FindFirstObjectByType<CarModel>();
         uiManager = FindFirstObjectByType<UIManager>();

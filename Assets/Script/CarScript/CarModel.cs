@@ -29,7 +29,7 @@ public class CarModel : MonoBehaviour
     public float BoostGauge; //update
     public bool isBoosting;
     public float boostMaxSpeed;
-    public float secondBoosMaxSpeed;
+    public float secondBoostMaxSpeed;
 
     [Header("SecondBoost (Optional)")]
     public float secondBoostCount; //countdown sebelum second boost dengan default 3.99 detik

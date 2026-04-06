@@ -74,9 +74,4 @@ public class MainMenuManager : MonoBehaviour
     }
 
     #endregion
-
-    void Update()
-    {
-        
-    }
 }

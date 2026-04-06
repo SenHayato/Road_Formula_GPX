@@ -223,8 +223,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69163d244f1774d44b08661e7466a7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCarActive
+  moveSpeed: 0
   maxSpeed: 0
-  defaultSpeed: 1
+  defaultSpeed: 0.5
   damageValue: 10
   maxSpeedLevel:
   - 0
@@ -236,11 +237,13 @@ MonoBehaviour:
   canTurn: 0
   isExploded: 0
   isBumped: 0
+  canKnocked: 1
   explosionEffect: {fileID: 0}
   carModel: {fileID: 0}
   playerCarActive: {fileID: 0}
   gameManager: {fileID: 0}
   nearMissScript: {fileID: 0}
+  maxSpeedNow: 0
 --- !u!61 &866600011023433034
 BoxCollider2D:
   m_ObjectHideFlags: 0

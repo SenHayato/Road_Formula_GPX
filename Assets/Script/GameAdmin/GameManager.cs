@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate = 60; //masih bisa diganti
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -64,6 +66,18 @@ public class GameManager : MonoBehaviour
 
         ScoreSetting();
         StartCoroutine(StartCountdown());
+    }
+
+    void HideCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
+    }
+
+    void UnHideCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = false;
     }
 
     IEnumerator StartCountdown()
@@ -99,10 +113,12 @@ public class GameManager : MonoBehaviour
         if (isPaused)
         {
             Time.timeScale = 0f;
+            UnHideCursor();
         }
         else
         {
             Time.timeScale = 1f;
+            HideCursor();
         }
     }
 
@@ -149,6 +165,7 @@ public class GameManager : MonoBehaviour
 
         if (gameOver)
         {
+            UnHideCursor();
             Invoke(nameof(ResultScreen), 5f);
         }
     }

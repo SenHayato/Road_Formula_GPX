@@ -33,6 +33,7 @@ public class PlayerCarActive : MonoBehaviour
     [Header("Reference")]
     [SerializeField] GameManager gameManager;
     [SerializeField] DialogueScript dialogueScript;
+    [SerializeField] AudioSource playerAudioSource;
 
     void Awake()
     {
@@ -222,7 +223,7 @@ public class PlayerCarActive : MonoBehaviour
     {
         if (carModel.inSecondBoost)
         {
-            maxSpeedNow = carModel.secondBoosMaxSpeed;
+            maxSpeedNow = carModel.secondBoostMaxSpeed;
             steeringPowerNow = 0.5f;
         }
         else

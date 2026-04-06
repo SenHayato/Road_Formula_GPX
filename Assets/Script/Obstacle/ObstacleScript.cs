@@ -15,10 +15,10 @@ public class ObstacleScript : MonoBehaviour
             if (collision.collider.TryGetComponent<PlayerCarActive>(out var playerCarActive))
             {
                 playerCarActive.TakeDamage(damageValue);
-                playerCarActive.TakeKnockBack(-contactPoint.x + knockPower);
+                playerCarActive.TakeKnockBack(-contactPoint.x * knockPower);
             }
 
-            Debug.Log("Tabrakan " + contactPoint);
+            //Debug.Log("Tabrakan " + contactPoint);
         }
     }
 }

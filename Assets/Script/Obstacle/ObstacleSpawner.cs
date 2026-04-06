@@ -112,8 +112,12 @@ public class ObstacleSpawner : MonoBehaviour
         }
     }
 
-    void Update()
+    //cheat
+    private void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SpawningStart();
+        }
     }
 }

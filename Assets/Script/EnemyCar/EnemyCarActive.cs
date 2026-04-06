@@ -1,10 +1,11 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyCarActive : MonoBehaviour
 {
     [Header("Enemy Component")]
-    float moveSpeed;
+    [SerializeField] float moveSpeed;
     [SerializeField] float maxSpeed;
     [SerializeField] float defaultSpeed;
     [SerializeField] int damageValue;
@@ -17,6 +18,7 @@ public class EnemyCarActive : MonoBehaviour
     [SerializeField] bool canTurn;
     [SerializeField] bool isExploded = false;
     [SerializeField] bool isBumped = false;
+    [SerializeField] bool canKnocked;
 
     [Header("Visual Effect")]
     [SerializeField] GameObject explosionEffect;
@@ -61,7 +63,7 @@ public class EnemyCarActive : MonoBehaviour
         maxSpeedLevel[0] = defaultSpeed;
         for (int i = 1; i < gameManager.gameMaxLevel + 1; i++)
         {
-            maxSpeedLevel[i] = maxSpeedLevel[i - 1] + 0.6f;
+            maxSpeedLevel[i] = maxSpeedLevel[i - 1] + 0.5f;
         }
     }
 
@@ -70,10 +72,17 @@ public class EnemyCarActive : MonoBehaviour
         maxSpeed = maxSpeedLevel[gameManager.gameLevel];
     }
 
-    float maxSpeedNow;
+    [SerializeField] float maxSpeedNow;
     void CarMoving()
     {
-        maxSpeedNow = maxSpeed;
+        if (carModel.isBoosting)
+        {
+            PlayerBoostSpeed();
+        }
+        else
+        {
+            maxSpeedNow = -maxSpeed;
+        }
 
         if (carModel.carSpeed > 0.45f)
         {
@@ -91,10 +100,6 @@ public class EnemyCarActive : MonoBehaviour
             moveSpeed = 15f * Time.deltaTime;
         }
 
-        if (carModel.isBoosting)
-        {
-            PlayerBoostSpeed();
-        }
 
         moveSpeed = Mathf.MoveTowards(moveSpeed, Mathf.Clamp(moveSpeed, -10f, maxSpeedNow), 5f * Time.deltaTime);
         transform.position += new Vector3(0f, moveSpeed, 0);
@@ -104,22 +109,81 @@ public class EnemyCarActive : MonoBehaviour
     {
         if (carModel.inSecondBoost)
         {
-
+            maxSpeedNow = -(carModel.secondBoostMaxSpeed + 5f);
         }
         else
         {
-
+            maxSpeedNow = -(carModel.boostMaxSpeed + 2f);
         }
     }
 
+    bool isKnocked = false;
+    void TakeKnockBack(float knockedPower)
+    {
+        if (!isKnocked)
+        {
+            isKnocked = true;
+            StartCoroutine(KnockBack(knockedPower));
+        }
+    }
+
+    IEnumerator KnockBack(float knockPower)
+    {
+        if (!isKnocked) yield break;
+
+        Vector3 knockDirection = new Vector3(knockPower, 0f, 0f);
+        float duration = 0.2f;
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            transform.position += 1.5f * Time.deltaTime * knockDirection;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        isKnocked = false;
+    }
+
+     float knockValue;
+     int direction;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
         {
+            Vector2 contactPoint = collision.GetContact(0).normal;
             if (collision.collider.TryGetComponent<PlayerCarActive>(out var playerCarActive))
             {
                 playerCarActive.TakeDamage(damageValue);
+
+                if (canKnocked)
+                {
+                    if (contactPoint.x != 0)
+                    {
+                        knockValue = contactPoint.x * 2.5f;
+                    }
+                    else if (contactPoint.y != 0)
+                    {
+                        if (contactPoint.y == -1)
+                        {
+                            direction = -1;
+                        }
+                        else
+                        {
+                            direction = 1;
+                        }
+                        knockValue = direction * 2.5f;
+                    }
+
+                    TakeKnockBack(knockValue);
+                    playerCarActive.TakeKnockBack(-knockValue);
+                }
+                //Debug.Log("Enemy car Contact " + contactPoint + " Knock Value " + knockValue);
             }
+        }
+        else if (collision.collider.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
         }
     }
 

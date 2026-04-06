@@ -49,6 +49,16 @@ public class SoundManager : MonoBehaviour
         //Debug.Log("Test Music");
     }
 
+    public void PlayAudioOnce(AudioSource audioSourceObj, AudioClip sfxClip)
+    {
+        if (audioSourceObj = null)
+        {
+            audioSourceObj = sfxSource;
+        }
+
+        
+    }
+
 
     #region Test UniTask
     public int second;

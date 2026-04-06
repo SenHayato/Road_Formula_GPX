@@ -3331,6 +3331,7 @@ MonoBehaviour:
   - {fileID: 1025719564}
   - {fileID: 526877718}
   spawnInterval: 2
+  spawnIntervalHyper: 0.1
   timeToSpawn: 0
   isSpawning: 0
   carRatesLevel: 0f000000140000002300000032000000
@@ -12070,6 +12071,7 @@ SceneRoots:
   - {fileID: 1481724148}
   - {fileID: 657785607}
   - {fileID: 1392390705}
+  - {fileID: 595640208}
   - {fileID: 1010628890}
   - {fileID: 619394802}
   - {fileID: 1076118530}
@@ -12079,4 +12081,3 @@ SceneRoots:
   - {fileID: 894975636}
   - {fileID: 1837615324}
   - {fileID: 1148925975}
-  - {fileID: 595640208}

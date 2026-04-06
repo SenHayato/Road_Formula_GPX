@@ -11,6 +11,7 @@ public class ObstacleSpawner : MonoBehaviour
     [Header("SpawnerProperties")]
     [SerializeField] Transform[] spawnerPoint; //diurutakan dari spawner pertama
     [SerializeField] float spawnInterval;
+    [SerializeField] float spawnIntervalHyper;
     [SerializeField] float timeToSpawn;
     [SerializeField] bool isSpawning = false;
 
@@ -103,12 +104,24 @@ public class ObstacleSpawner : MonoBehaviour
         }
     }
 
-
+    
     void ResetCooldown()
     {
         if (timeToSpawn <= 0)
         {
-            timeToSpawn = spawnInterval;
+            if (!carModel.inSecondBoost)
+            {
+                timeToSpawn = spawnInterval;
+                if (carModel.isBoosting)
+                {
+                    SpawningEnemy(carRatesLevel[gameManager.gameLevel], truckRateLevel[gameManager.gameLevel]);
+                }
+            }
+            else
+            {
+                timeToSpawn = spawnIntervalHyper;
+                SpawningEnemy(carRatesLevel[gameManager.gameLevel], truckRateLevel[gameManager.gameLevel]);
+            }
         }
     }
 

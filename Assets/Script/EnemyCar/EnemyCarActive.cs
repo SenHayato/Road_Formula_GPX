@@ -189,7 +189,7 @@ public class EnemyCarActive : MonoBehaviour
         }
         else if (collision.collider.CompareTag("Wall"))
         {
-            Destroy(gameObject);
+            Explode();
         }
     }
 
@@ -204,6 +204,7 @@ public class EnemyCarActive : MonoBehaviour
     public void Explode()
     {
         //Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        VisualEffectManager.Instance.ExplodeEffect(transform.position);
         Destroy(gameObject);
     }
 

@@ -7,7 +7,7 @@ public class VisualEffectManager : MonoBehaviour
     [SerializeField] GameObject[] explodeVisualEffect;
     [SerializeField] GameObject itemGetVisualEffect;
 
-    public static VisualEffectManager Instance  {  get; private set; }
+    public static VisualEffectManager Instance { get; private set; }
 
     private void Start()
     {
@@ -31,5 +31,12 @@ public class VisualEffectManager : MonoBehaviour
     public void ItemGetEffect(Vector2 spawnTransform)
     {
         Instantiate(itemGetVisualEffect, spawnTransform, Quaternion.identity);
+    }
+
+    public void ExplodeEffect(Vector3 spawnTransform)
+    {
+        int visualEffectNum = Random.Range(0, explodeVisualEffect.Length);
+        spawnTransform.z = -2f;
+        Instantiate(explodeVisualEffect[visualEffectNum], spawnTransform, Quaternion.identity);
     }
 }

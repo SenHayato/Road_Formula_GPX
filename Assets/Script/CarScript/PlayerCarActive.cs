@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections;
-using Unity.VisualScripting;
+using Unity;
 using UnityEngine;
 
 public class PlayerCarActive : MonoBehaviour
@@ -88,7 +88,7 @@ public class PlayerCarActive : MonoBehaviour
         carMaxSpeedlevel[0] = carModel.carMaxSpeed;
         for (int i = 1; i < gameManager.gameMaxLevel + 1; i++)
         {
-            carMaxSpeedlevel[i] = carMaxSpeedlevel[i-1] + 0.5f;
+            carMaxSpeedlevel[i] = carMaxSpeedlevel[i - 1] + 0.5f;
         }
     }
 
@@ -378,13 +378,20 @@ public class PlayerCarActive : MonoBehaviour
         isKnocked = false;
     }
 
+    bool wasExplode = false;
     void CarExploded()
     {
         if (carModel.damagePoint <= 0)
         {
-            dialogueScript.DialogueSetUp(CarDriver.DriverReaction.Panic);
             carExplode = true;
             carModel.damagePoint = 0; //sementara
+
+            if (carExplode && !wasExplode)
+            {
+                wasExplode = true;
+                dialogueScript.DialogueSetUp(CarDriver.DriverReaction.Panic);
+                VisualEffectManager.Instance.ExplodeEffect(transform.position);
+            }
         }
     }
 
@@ -404,7 +411,7 @@ public class PlayerCarActive : MonoBehaviour
     void CarVisualEffect()
     {
         for (int i = 0; i < boosterObj.Length; i++)
-        {            
+        {
             if (carModel.isBoosting)
             {
                 boosterObj[i].SetActive(true);
@@ -431,7 +438,7 @@ public class PlayerCarActive : MonoBehaviour
 
     void Update()
     {
-        
+
         //Setting
         CarLevelConfig();
         CarMaxCap();

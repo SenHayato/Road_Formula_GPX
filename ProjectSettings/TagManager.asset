@@ -46,5 +46,8 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Visual Effect
+    uniqueID: 552770941
+    locked: 0
   m_RenderingLayers:
   - Default

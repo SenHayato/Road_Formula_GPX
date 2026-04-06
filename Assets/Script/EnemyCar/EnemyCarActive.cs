@@ -151,7 +151,10 @@ public class EnemyCarActive : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            Vector2 contactPoint = collision.GetContact(0).normal;
+            ContactPoint2D contact = collision.GetContact(0);
+
+            Vector2 contactPoint = contact.normal;
+            Vector2 contactPointWorld = contact.point;
             if (collision.collider.TryGetComponent<PlayerCarActive>(out var playerCarActive))
             {
                 playerCarActive.TakeDamage(damageValue);
@@ -179,6 +182,8 @@ public class EnemyCarActive : MonoBehaviour
                     playerCarActive.TakeKnockBack(-knockValue);
                 }
                 //Debug.Log("Enemy car Contact " + contactPoint + " Knock Value " + knockValue);
+                //Debug.Log("Posisi tabrakan " + contactPointWorld);
+                VisualEffectManager.Instance.BumpEffect(contactPointWorld);
             }
         }
         else if (collision.collider.CompareTag("Wall"))

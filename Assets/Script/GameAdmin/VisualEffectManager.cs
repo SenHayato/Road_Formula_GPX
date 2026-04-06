@@ -5,7 +5,7 @@ public class VisualEffectManager : MonoBehaviour
     [Header("Visual Effect Library")]
     [SerializeField] GameObject[] bumpVisualEffect;
     [SerializeField] GameObject[] explodeVisualEffect;
-    [SerializeField] GameObject[] itemGetVisualEffect;
+    [SerializeField] GameObject itemGetVisualEffect;
 
     public static VisualEffectManager Instance  {  get; private set; }
 
@@ -21,9 +21,15 @@ public class VisualEffectManager : MonoBehaviour
         }
     }
 
-    public void BumpEffect(Vector2 spawnTransform)
+    public void BumpEffect(Vector3 spawnTransform)
     {
         int visualEffectNum = Random.Range(0, bumpVisualEffect.Length);
+        spawnTransform.z = -2f;
         Instantiate(bumpVisualEffect[visualEffectNum], spawnTransform, Quaternion.identity);
+    }
+
+    public void ItemGetEffect(Vector2 spawnTransform)
+    {
+        Instantiate(itemGetVisualEffect, spawnTransform, Quaternion.identity);
     }
 }

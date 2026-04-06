@@ -155,6 +155,7 @@ public class EnemyCarActive : MonoBehaviour
 
             Vector2 contactPoint = contact.normal;
             Vector2 contactPointWorld = contact.point;
+
             if (collision.collider.TryGetComponent<PlayerCarActive>(out var playerCarActive))
             {
                 playerCarActive.TakeDamage(damageValue);

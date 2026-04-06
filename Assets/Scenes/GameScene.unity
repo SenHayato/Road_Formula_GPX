@@ -3512,7 +3512,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 0000000045daa56e
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -7089,8 +7089,13 @@ MonoBehaviour:
   bumpVisualEffect:
   - {fileID: 3042519775331041172, guid: 841004c4c6a39e244abe2257394de913, type: 3}
   - {fileID: 4306488877223958017, guid: ecb38e0319a6ad44cbca52d7b5add7a6, type: 3}
-  explodeVisualEffect: []
-  itemGetVisualEffect: []
+  - {fileID: 1226031520979461127, guid: 9c692d73cd82e0d409bec909e987a5b8, type: 3}
+  - {fileID: 271054424957760564, guid: 1468eeb0963ddad41909c04ad8af0aee, type: 3}
+  explodeVisualEffect:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  itemGetVisualEffect: {fileID: 3022102558446658867, guid: cd3d579a2d65b3241a1812f639db37ec, type: 3}
 --- !u!1 &1394059331
 GameObject:
   m_ObjectHideFlags: 0

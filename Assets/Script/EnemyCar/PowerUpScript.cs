@@ -37,6 +37,11 @@ public class PowerUpScript : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
+            if (collider.TryGetComponent<PlayerCarActive>(out var player))
+            {
+                VisualEffectManager.Instance.ItemGetEffect(player.transform.position);
+            }
+            
             switch (powerType)
             {
                 case PowerType.DamagePointUp:

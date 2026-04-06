@@ -10,14 +10,16 @@ public class ObstacleScript : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            Vector2 contactPoint = collision.GetContact(0).normal;
+            ContactPoint2D contact = collision.GetContact(0);
+            Vector2 contactPoint = contact.normal;
+            Vector2 contactPointWorld = contact.point;
 
             if (collision.collider.TryGetComponent<PlayerCarActive>(out var playerCarActive))
             {
                 playerCarActive.TakeDamage(damageValue);
                 playerCarActive.TakeKnockBack(-contactPoint.x * knockPower);
             }
-
+            VisualEffectManager.Instance.BumpEffect(contactPointWorld);
             //Debug.Log("Tabrakan " + contactPoint);
         }
     }

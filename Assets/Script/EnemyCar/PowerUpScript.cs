@@ -41,7 +41,8 @@ public class PowerUpScript : MonoBehaviour
             {
                 VisualEffectManager.Instance.ItemGetEffect(player.transform.position);
             }
-            
+
+            SoundManager.Instance.PlaySFXOnce(null, "ItemGet");
             switch (powerType)
             {
                 case PowerType.DamagePointUp:

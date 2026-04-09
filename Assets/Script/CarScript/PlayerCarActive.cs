@@ -51,6 +51,7 @@ public class PlayerCarActive : MonoBehaviour
         inputScript = FindFirstObjectByType<InputScript>();
         rigid2D = GetComponent<Rigidbody2D>();
         dialogueScript = FindFirstObjectByType<DialogueScript>();
+        playerAudioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -317,10 +318,12 @@ public class PlayerCarActive : MonoBehaviour
             if (!carModel.inAeroMode)
             {
                 carModel.inAeroMode = true;
+                SoundManager.Instance.PlaySFXOnce(playerAudioSource, "TransformSound");
             }
             else
             {
                 carModel.inAeroMode = false;
+                SoundManager.Instance.PlaySFXOnce(playerAudioSource, "TransformSound");
             }
         }
     }

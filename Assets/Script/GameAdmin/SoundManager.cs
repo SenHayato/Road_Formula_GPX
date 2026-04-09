@@ -52,7 +52,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySFXOnce(AudioSource audioSourceObj, string clipName)
     {
-        if (audioSourceObj = null)
+        if (audioSourceObj == null)
         {
             audioSourceObj = sfxSource;
         }

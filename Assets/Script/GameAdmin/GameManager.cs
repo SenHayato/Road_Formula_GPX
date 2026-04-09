@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
     }
 
+    bool startAudio = false;
     IEnumerator StartCountdown()
     {
         while (true)
@@ -87,6 +88,11 @@ public class GameManager : MonoBehaviour
             int countdownInt = (int) countdown;
             if (countdown > 0)
             {
+                if (!startAudio)
+                {
+                    startAudio = true;
+                    SoundManager.Instance.PlaySFXOnce(null, "LightStart");
+                }
                 countdown -= 1f * Time.deltaTime;
                 uiManager.countdownText.text = countdownInt.ToString();
 

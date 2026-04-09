@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Timeline;
 
 public class SoundManager : MonoBehaviour
@@ -49,14 +50,21 @@ public class SoundManager : MonoBehaviour
         //Debug.Log("Test Music");
     }
 
-    public void PlayAudioOnce(AudioSource audioSourceObj, AudioClip sfxClip)
+    public void PlaySFXOnce(AudioSource audioSourceObj, string clipName)
     {
         if (audioSourceObj = null)
         {
             audioSourceObj = sfxSource;
         }
 
-        
+        foreach (var clip in sfxClips)
+        {
+            if (clip.name == clipName)
+            {
+                audioSourceObj.PlayOneShot(clip);
+                return;
+            }
+        }
     }
 
 

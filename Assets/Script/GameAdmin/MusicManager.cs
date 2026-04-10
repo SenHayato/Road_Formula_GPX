@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class MusicManager : MonoBehaviour
@@ -12,6 +13,11 @@ public class MusicManager : MonoBehaviour
     [Header("BGM Condition")]
     [SerializeField] bool isBGMPlaying = false;
     [SerializeField] bool isBGMRandom = true;
+
+    [Header("UI Pop UP Music")]
+    [SerializeField] GameObject popUpMusic;
+    [SerializeField] TextMeshProUGUI musicName;
+    [SerializeField] float musicPopUpDuration;
 
     [Header("Component")]
     [SerializeField] AudioSource musicSource;

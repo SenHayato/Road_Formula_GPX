@@ -204,20 +204,5 @@ public class GameManager : MonoBehaviour
         {
             UIMonitor();
         }
-
-        //PlayBGM();
-    }
-
-    //test
-    void PlayBGM() //untuk sound effect bisa memakai fungsi ini
-    {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            SoundManager.Instance.MusicPlayList();
-            //if (MusicManager.Instance != null)
-            //{
-                
-            //}
-        }
     }
 }

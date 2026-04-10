@@ -3,6 +3,7 @@ using UnityEngine;
 public class NearMissScript : MonoBehaviour
 {
     //[SerializeField] int nearMissScore;
+    [SerializeField] EnemyType enemyType;
     [SerializeField] GameManager gameManager;
 
     private void Awake()
@@ -10,14 +11,34 @@ public class NearMissScript : MonoBehaviour
         gameManager = FindFirstObjectByType<GameManager>();
     }
 
+    bool isNearMiss = false;
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            if (collision.TryGetComponent<PlayerCarActive>(out var playerCarActive))
+            if (!isNearMiss)
             {
-                playerCarActive.BoostFillNearMiss();
+                isNearMiss = true;
+                if (collision.TryGetComponent<PlayerCarActive>(out var playerCarActive))
+                {
+                    playerCarActive.BoostFillNearMiss();
+                }
+
+                switch (enemyType)
+                {
+                    case EnemyType.Car:
+                        SoundManager.Instance.PlaySFXOnce(null, "CarPassingBy");
+                        break;
+                    case EnemyType.Truck:
+                        SoundManager.Instance.PlaySFXOnce(null, "Truckpassingby");
+                        break;
+                }
             }
         }
+    }
+
+    private enum EnemyType
+    {
+        Car, Truck
     }
 }

@@ -28,6 +28,7 @@ public class EnemyCarActive : MonoBehaviour
     [SerializeField] PlayerCarActive playerCarActive;
     [SerializeField] GameManager gameManager;
     [SerializeField] NearMissScript nearMissScript;
+    [SerializeField] AudioSource audioSource;
 
     void Awake()
     {
@@ -185,6 +186,7 @@ public class EnemyCarActive : MonoBehaviour
                 //Debug.Log("Enemy car Contact " + contactPoint + " Knock Value " + knockValue);
                 //Debug.Log("Posisi tabrakan " + contactPointWorld);
                 VisualEffectManager.Instance.BumpEffect(contactPointWorld);
+                SoundManager.Instance.PlayCrashSFX(audioSource);
             }
         }
         else if (collision.collider.CompareTag("Wall"))
@@ -205,6 +207,7 @@ public class EnemyCarActive : MonoBehaviour
     {
         //Instantiate(explosionEffect, transform.position, Quaternion.identity);
         VisualEffectManager.Instance.ExplodeEffect(transform.position);
+        SoundManager.Instance.PlayCrashSFX(audioSource);
         Destroy(gameObject);
     }
 
@@ -224,6 +227,7 @@ public class EnemyCarActive : MonoBehaviour
             rigid2d.AddForce(500f * Time.deltaTime * knockback);
             Invoke(nameof(Explode), Random.Range(1,3));
             isTakenDown = true;
+            SoundManager.Instance.PlayCrashSFX(audioSource);
         }
     }
 

@@ -3331,7 +3331,7 @@ MonoBehaviour:
   - {fileID: 1025719564}
   - {fileID: 526877718}
   spawnInterval: 2
-  spawnIntervalHyper: 0.1
+  spawnIntervalHyper: 0.01
   timeToSpawn: 0
   isSpawning: 0
   carRatesLevel: 0f000000140000002300000032000000
@@ -5276,7 +5276,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8d9f6da1f2954d04e8adfcb02baff2da, type: 3}
   - {fileID: 8300000, guid: 7b0fa13382c90a74a8df4c3c04f75b07, type: 3}
   - {fileID: 8300000, guid: 67b4017fab78a724b9aab3c8e3a1a728, type: 3}
-  crashImpactClips: []
+  - {fileID: 8300000, guid: 73dafb84c13ce9740bc37bbc62e54ebd, type: 3}
+  - {fileID: 8300000, guid: 0162f97b9f911c24ba3b4d5f4effbc54, type: 3}
+  - {fileID: 8300000, guid: bdf7d813a3bcb644c808b9f7e5df7e31, type: 3}
+  - {fileID: 8300000, guid: 4cb99f2e5fa1a5245abd7c029317386b, type: 3}
+  - {fileID: 8300000, guid: 778530f5f73920f4aa3f7b06fbfd141e, type: 3}
+  - {fileID: 8300000, guid: 2a499e247ad3df440b12fc66a214b977, type: 3}
+  crashImpactClips:
+  - {fileID: 8300000, guid: 4e226e18f8b45da4bb0a9ab5927822fa, type: 3}
+  - {fileID: 8300000, guid: 7a1f3220fddb7dd48844d3c6b4e5ea14, type: 3}
+  - {fileID: 8300000, guid: 6e0a984f960ac0a46b0ce40079a1e563, type: 3}
+  - {fileID: 8300000, guid: 6d61a2a10add8a84f821b5fe98aa8eb5, type: 3}
+  - {fileID: 8300000, guid: 4dfd80cfe14d6cc4eb6d01885ff9d72a, type: 3}
+  - {fileID: 8300000, guid: 6b3bc886a9c715b48a1fa44913019d69, type: 3}
+  - {fileID: 8300000, guid: 708b870e8ea52944ab6a05731baeb6ab, type: 3}
   musicSource: {fileID: 1010628891}
   sfxSource: {fileID: 139349669}
   second: 1000

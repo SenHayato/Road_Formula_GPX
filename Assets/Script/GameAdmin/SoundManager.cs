@@ -67,6 +67,18 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PlayCrashSFX(AudioSource audioSourceObj)
+    {
+        if (audioSourceObj == null)
+        {
+            audioSourceObj = sfxSource;
+        }
+
+        int sfxNum = Random.Range(0, crashImpactClips.Length);
+        audioSourceObj.PlayOneShot(crashImpactClips[sfxNum]);
+        return;
+    }
+
 
     #region Test UniTask
     public int second;

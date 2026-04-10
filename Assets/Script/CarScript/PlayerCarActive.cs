@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using Unity;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerCarActive : MonoBehaviour
 {
@@ -171,15 +172,28 @@ public class PlayerCarActive : MonoBehaviour
     }
 
     float maxSpeedNow;
+    bool isBrake = false;
+    bool isAccel = false;
     void CarAcceleration()
     {
         if (inputScript.gasAction.IsPressed())
         {
             carModel.carSpeed += carModel.carAcceleration * Time.deltaTime;
+            isBrake = false;
+            if (!isAccel)
+            {
+                isAccel = true;
+            }
         }
         else if (inputScript.brakeAction.IsPressed())
         {
             carModel.carSpeed -= carModel.carBraking * Time.deltaTime;
+            isAccel = false;
+            if (!isBrake)
+            {
+                isBrake = true;
+                SoundManager.Instance.PlaySFXOnce(playerAudioSource, "TireRubsRoad");
+            }
         }
         else
         {
@@ -217,7 +231,12 @@ public class PlayerCarActive : MonoBehaviour
 
     void BoostColliderToogle()
     {
-        boostCollider.SetActive(carModel.isBoosting);
+        boostCollider.SetActive(true);
+    }
+
+    void BoostColliderDisable()
+    {
+        boostCollider.SetActive(false);
     }
 
     void BoostSpeed()
@@ -235,6 +254,7 @@ public class PlayerCarActive : MonoBehaviour
         }
     }
 
+    bool isBoostSound = false;
     void BoostMode()
     {
         if (inputScript.boostAction.triggered && carModel.BoostGauge >= carModel.BoostMaxGauge && !carModel.isBoosting)
@@ -245,6 +265,7 @@ public class PlayerCarActive : MonoBehaviour
                 {
                     carModel.isBoosting = true;
                     dialogueScript.DialogueSetUp(CarDriver.DriverReaction.Mad);
+                    SoundManager.Instance.PlaySFXOnce(playerAudioSource, "CarBooster");
                     if (carModel.canSecondBoost)
                     {
                         carModel.secondBoostCount = 3.99f;
@@ -303,6 +324,8 @@ public class PlayerCarActive : MonoBehaviour
             if (carModel.isBoosting)
             {
                 dialogueScript.DialogueSetUp(CarDriver.DriverReaction.Default);
+                SoundManager.Instance.PlaySFXOnce(playerAudioSource, "CarSecondBoost");
+                SoundManager.Instance.PlaySFXOnce(null, "WindGustEffect");
                 carModel.inSecondBoost = true;
                 secondBoostReady = false;
             }
@@ -394,6 +417,7 @@ public class PlayerCarActive : MonoBehaviour
                 wasExplode = true;
                 dialogueScript.DialogueSetUp(CarDriver.DriverReaction.Panic);
                 VisualEffectManager.Instance.ExplodeEffect(transform.position);
+                SoundManager.Instance.PlayCrashSFX(playerAudioSource);
             }
         }
     }
@@ -452,12 +476,21 @@ public class PlayerCarActive : MonoBehaviour
         //Behaviour
         CarExploded();
         BoostMode();
-        BoostColliderToogle();
+
         if (carModel.canChangeAero)
         {
             ChangeForm();
         }
         CarAcceleration();
+
+        if (carModel.isBoosting)
+        {
+            BoostColliderToogle();
+        }
+        else
+        {
+            Invoke(nameof(BoostColliderDisable), 2f);
+        }
 
         if (!isKnocked)
         {

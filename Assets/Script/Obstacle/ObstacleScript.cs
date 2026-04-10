@@ -20,6 +20,7 @@ public class ObstacleScript : MonoBehaviour
                 playerCarActive.TakeKnockBack(-contactPoint.x * knockPower);
             }
             VisualEffectManager.Instance.BumpEffect(contactPointWorld);
+            SoundManager.Instance.PlayCrashSFX(null);
             //Debug.Log("Tabrakan " + contactPoint);
         }
     }

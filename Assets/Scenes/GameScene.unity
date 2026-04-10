@@ -5340,9 +5340,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 181f6de87de6cb44784c6753124f8141, type: 3}
   isBGMPlaying: 0
   isBGMRandom: 1
-  popUpMusic: {fileID: 0}
-  musicName: {fileID: 0}
-  musicPopUpDuration: 0
+  popUpMusic: {fileID: 1814161818}
+  musicName: {fileID: 1888077936}
+  musicPopUpDuration: 0.4
+  animEase: 11
   musicSource: {fileID: 148596608}
 --- !u!1 &1013700592
 GameObject:
@@ -10372,7 +10373,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -446, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1837615321

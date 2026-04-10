@@ -16,9 +16,10 @@ public class MusicManager : MonoBehaviour
     [SerializeField] bool isBGMRandom = true;
 
     [Header("UI Pop UP Music")]
-    [SerializeField] GameObject popUpMusic;
+    [SerializeField] RectTransform popUpMusic;
     [SerializeField] TextMeshProUGUI musicName;
     [SerializeField] float musicPopUpDuration;
+    [SerializeField] Ease animEase;
 
     [Header("Component")]
     [SerializeField] AudioSource musicSource;
@@ -48,7 +49,8 @@ public class MusicManager : MonoBehaviour
 
     int clipNumber;
     bool lastRandomState;
-    IEnumerator PlayMusic()
+    bool isPopUp = false;
+    IEnumerator PlayMusic() //Mungkin akan jalan jika input next previous song sudah diimplemen karena korotine jalan sekali (bisa event)
     {
         lastRandomState = isBGMRandom;
 
@@ -60,10 +62,16 @@ public class MusicManager : MonoBehaviour
                 lastRandomState = isBGMRandom;
             }
 
+            if (!isPopUp)
+            {
+                MusicPopUpToggle();
+            }
+
             if (isBGMRandom)
             {
                 clipNumber = Random.Range(0, bgmClips.Length);
                 bgmNumber = clipNumber + 1;
+                musicName.text = bgmClips[clipNumber].name;
 
                 musicSource.loop = false;
                 musicSource.clip = bgmClips[clipNumber];
@@ -77,6 +85,7 @@ public class MusicManager : MonoBehaviour
 
                 if (musicSource.clip != bgmClips[clipNumber])
                 {
+                    musicName.text = bgmClips[clipNumber].name;
                     musicSource.loop = true;
                     musicSource.clip = bgmClips[clipNumber];
                     musicSource.Play();
@@ -84,6 +93,21 @@ public class MusicManager : MonoBehaviour
 
                 yield return null;
             }
+
         }
+    }
+
+    void MusicPopUpToggle()
+    {
+        popUpMusic.DOAnchorPosX(0, musicPopUpDuration).SetEase(animEase);
+        Invoke(nameof(MusicPopUpReset), 4f);
+        Debug.Log("Pop Up Music Enable");
+    }
+
+    void MusicPopUpReset()
+    {
+        isPopUp = false;
+        popUpMusic.DOAnchorPosX(-446, musicPopUpDuration).SetEase(animEase);
+        Debug.Log("Pop Up Music Disable");
     }
 }

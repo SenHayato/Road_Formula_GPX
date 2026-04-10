@@ -15,10 +15,10 @@ public class BoostColliderScript : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             Debug.Log("Kena Musuh Boost");
-            int BumpGenerator = Random.Range(0, 2);
+            int BumpGenerator = Random.Range(0, 3);
             if (collision.TryGetComponent<EnemyCarActive>(out var enemyCarActive))
             {
-                if (BumpGenerator == 3)
+                if (BumpGenerator == 2)
                 {
                     enemyCarActive.Explode();
                 }

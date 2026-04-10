@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 public class GameManager : MonoBehaviour
 {
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
 
         ScoreSetting();
         StartCoroutine(StartCountdown());
+        //StartCoroutine(CountdownSound());
     }
 
     void HideCursor()
@@ -83,35 +85,39 @@ public class GameManager : MonoBehaviour
     bool startAudio = false;
     IEnumerator StartCountdown()
     {
-        while (true)
+        startAudio = false;
+
+        while (countdown > 0)
         {
-            int countdownInt = (int) countdown;
-            if (countdown > 0)
+            int countdownInt = Mathf.CeilToInt(countdown);
+            uiManager.CountdownHide();
+            uiManager.countdownText.text = countdownInt.ToString();
+
+            SoundManager.Instance.PlaySFXOnce(null, "StartSound");
+            yield return new WaitForSeconds(3.9f);
+            uiManager.CountdownShow();
+
+            while (countdown > 0)
             {
-                if (!startAudio)
-                {
-                    startAudio = true;
-                    SoundManager.Instance.PlaySFXOnce(null, "LightStart");
-                }
-                countdown -= 1f * Time.deltaTime;
+                countdownInt = Mathf.CeilToInt(countdown);
                 uiManager.countdownText.text = countdownInt.ToString();
 
-                if (countdown < 1f)
-                {
-                    uiManager.countdownText.text = "START";
-                    uiManager.HideCountdown();
-                    playerCarActive.enabled = true;
+                SoundManager.Instance.PlaySFXOnce(null, "LightCount");
 
-                    if (countdown <= 0)
-                    {
-                        gameStarted = true;
-                        countdown = 0f;
-                    }
-                    //break;
-                }
+                yield return new WaitForSeconds(1f);
+                countdown -= 1f;
             }
-            yield return null;
         }
+
+        // START
+        uiManager.countdownText.text = "START";
+        SoundManager.Instance.PlaySFXOnce(null, "LightStart");
+
+        uiManager.HideCountdownTime();
+        playerCarActive.enabled = true;
+
+        gameStarted = true;
+        countdown = 0f;
     }
 
     void GamePaused()
@@ -155,10 +161,16 @@ public class GameManager : MonoBehaviour
     {
         if (carModel.carSpeed > 0)
         {
-            float gameScoring = (carModel.carSpeed + scoreIncrease) * Time.time;
-            gameScore = (int)gameScoring;
+            float gameScoring = (carModel.carSpeed + scoreIncrease) * Time.deltaTime;
+            gameScore += (int)gameScoring;
             gameLenght += carModel.carSpeed * Time.deltaTime;
         }
+    }
+
+    public void ScoreAdd(int scoreValue)
+    {
+        gameScore += scoreValue;
+        Debug.Log("Score Tambah " + scoreValue);
     }
 
     void GameOver()
@@ -192,7 +204,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         GameOver();
-        //UpgradeLevel();
+        UpgradeLevel();
         ScoreCount();
 
         if (!gameOver)

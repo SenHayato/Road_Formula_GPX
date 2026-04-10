@@ -38,6 +38,11 @@ public class MusicManager : MonoBehaviour
     private void Start()
     {
         bgmNumber = Mathf.Clamp(bgmNumber, 1, bgmClips.Length);
+        Invoke(nameof(PlayBGMSystem), 8f);
+    }
+
+    public void PlayBGMSystem()
+    {
         StartCoroutine(PlayMusic());
     }
 

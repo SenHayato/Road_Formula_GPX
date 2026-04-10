@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69163d244f1774d44b08661e7466a7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCarActive
+  enemyType: 1
   moveSpeed: 0
   maxSpeed: 0
   defaultSpeed: 0.3
@@ -68,6 +69,7 @@ MonoBehaviour:
   playerCarActive: {fileID: 0}
   gameManager: {fileID: 0}
   nearMissScript: {fileID: 0}
+  audioSource: {fileID: 0}
   maxSpeedNow: 0
 --- !u!61 &5841056073613916048
 BoxCollider2D:
@@ -373,6 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae8b93e8ddb13640af255ddadf26527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NearMissScript
+  enemyType: 0
   gameManager: {fileID: 0}
 --- !u!61 &5049802575734657842
 BoxCollider2D:

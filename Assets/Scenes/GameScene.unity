@@ -3460,7 +3460,7 @@ MonoBehaviour:
   - {fileID: 1025719564}
   - {fileID: 526877718}
   spawnInterval: 2
-  spawnIntervalHyper: 0.01
+  spawnIntervalHyper: 0.0001
   timeToSpawn: 0
   isSpawning: 0
   carRatesLevel: 0f000000140000002300000032000000
@@ -5311,6 +5311,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4cb99f2e5fa1a5245abd7c029317386b, type: 3}
   - {fileID: 8300000, guid: 778530f5f73920f4aa3f7b06fbfd141e, type: 3}
   - {fileID: 8300000, guid: 2a499e247ad3df440b12fc66a214b977, type: 3}
+  - {fileID: 8300000, guid: e1ee7d099cd6a1144b7bf4682c773b0f, type: 3}
+  - {fileID: 8300000, guid: 8f84827cb085ccb4c92d6557f97257ba, type: 3}
+  - {fileID: 8300000, guid: e40e2a412d740984590be8d51c24f33e, type: 3}
   crashImpactClips:
   - {fileID: 8300000, guid: 4e226e18f8b45da4bb0a9ab5927822fa, type: 3}
   - {fileID: 8300000, guid: 7a1f3220fddb7dd48844d3c6b4e5ea14, type: 3}
@@ -5334,11 +5337,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmNumber: 0
   bgmClips:
-  - {fileID: 8300000, guid: 26ab9aaeed6a7014ea2e9054058a62c7, type: 3}
-  - {fileID: 8300000, guid: 161e0d67e2d072d44b7f4ceade2762d6, type: 3}
-  - {fileID: 8300000, guid: 398335aa179d98a458bb5a3db861a480, type: 3}
+  - {fileID: 8300000, guid: 181f6de87de6cb44784c6753124f8141, type: 3}
   isBGMPlaying: 0
   isBGMRandom: 1
+  popUpMusic: {fileID: 0}
+  musicName: {fileID: 0}
+  musicPopUpDuration: 0
   musicSource: {fileID: 148596608}
 --- !u!1 &1013700592
 GameObject:
@@ -7694,7 +7698,7 @@ MonoBehaviour:
   scoreIncrease: 100
   countdown: 0
   gameStarted: 0
-  countdownValue: 3.99
+  countdownValue: 3
   resultScreen: {fileID: 1292866987}
   uiManager: {fileID: 0}
   carModel: {fileID: 0}

@@ -114,13 +114,13 @@ public class ObstacleSpawner : MonoBehaviour
                 timeToSpawn = spawnInterval;
                 if (carModel.isBoosting)
                 {
-                    SpawningEnemy(carRatesLevel[gameManager.gameLevel], truckRateLevel[gameManager.gameLevel]);
+                    SpawningEnemy(carRatesLevel[gameManager.gameLevel], truckRateLevel[gameManager.gameLevel] / 2);
                 }
             }
             else
             {
                 timeToSpawn = spawnIntervalHyper;
-                SpawningEnemy(carRatesLevel[gameManager.gameLevel], truckRateLevel[gameManager.gameLevel]);
+                SpawningEnemy(carRatesLevel[gameManager.gameLevel], truckRateLevel[gameManager.gameLevel] / 2);
             }
         }
     }

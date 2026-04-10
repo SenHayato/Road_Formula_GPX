@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyCarActive : MonoBehaviour
 {
     [Header("Enemy Component")]
+    [SerializeField] EnemyType enemyType;
     [SerializeField] float moveSpeed;
     [SerializeField] float maxSpeed;
     [SerializeField] float defaultSpeed;
@@ -203,13 +204,6 @@ public class EnemyCarActive : MonoBehaviour
         }
     }
 
-    public void Explode()
-    {
-        //Instantiate(explosionEffect, transform.position, Quaternion.identity);
-        VisualEffectManager.Instance.ExplodeEffect(transform.position);
-        SoundManager.Instance.PlayCrashSFX(audioSource);
-        Destroy(gameObject);
-    }
 
     bool isTakenDown = false;
     float knockRotateSpeed = 200f;
@@ -246,8 +240,30 @@ public class EnemyCarActive : MonoBehaviour
         }
     }
 
+    public void Explode()
+    {
+        //Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        VisualEffectManager.Instance.ExplodeEffect(transform.position);
+        SoundManager.Instance.PlayCrashSFX(audioSource);
+        Destroy(gameObject);
+    }
+
+    int scoreToAdd;
     private void OnDestroy()
     {
+        if (isKnocked || isTakenDown)
+        {
+            switch (enemyType)
+            {
+                case EnemyType.Car:
+                    scoreToAdd = 500;
+                    break;
+                case EnemyType.Truck:
+                    scoreToAdd = 1000;
+                    break;
+            }
+            gameManager.ScoreAdd(scoreToAdd);
+        }
         carModel = null;
         playerCarActive = null;
     }
@@ -261,5 +277,10 @@ public class EnemyCarActive : MonoBehaviour
         {
             CarMoving();
         }
+    }
+
+    private enum EnemyType
+    {
+        Car, Truck
     }
 }

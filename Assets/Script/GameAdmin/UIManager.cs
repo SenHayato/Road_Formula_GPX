@@ -123,14 +123,19 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void HideCountdown()
+    public void HideCountdownTime()
     {
         Invoke(nameof(CountdownHide), 1.2f);
     }
 
-    void CountdownHide()
+    public void CountdownHide()
     {
         countdownObj.SetActive(false);
+    }
+
+    public void CountdownShow()
+    {
+        countdownObj.SetActive(true);
     }
 
     void Update()

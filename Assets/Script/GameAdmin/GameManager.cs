@@ -173,6 +173,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Score Tambah " + scoreValue);
     }
 
+    bool wasOver;
     void GameOver()
     {
         if ((carModel.carFuel <= 0f || playerCarActive.carExplode) && gameStarted)
@@ -190,6 +191,11 @@ public class GameManager : MonoBehaviour
 
     void ResultScreen()
     {
+        if (!wasOver)
+        {
+            wasOver = true;
+            MusicManager.Instance.StopGameMusic();
+        }
         Time.timeScale = 0f;
         resultScreen.SetActive(true);
         resultScreenScript.SettingTheScore(gameScore, gameLenght);

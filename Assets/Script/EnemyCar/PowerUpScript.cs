@@ -23,7 +23,14 @@ public class PowerUpScript : MonoBehaviour
         float powerMoving;
         if (carModel.carSpeed > 0)
         {
-            powerMoving = -moveSpeed * Time.deltaTime;
+            if (carModel.inAeroMode)
+            {
+                powerMoving = -(moveSpeed + 2f) * Time.deltaTime;
+            }
+            else
+            {
+                powerMoving = -moveSpeed * Time.deltaTime;
+            }
         }
         else
         {

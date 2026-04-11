@@ -5335,9 +5335,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cebdc3a7d8ca9747b2be1c46cf42a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmNumber: 0
+  bgmNumber: 1
   bgmClips:
   - {fileID: 8300000, guid: 181f6de87de6cb44784c6753124f8141, type: 3}
+  - {fileID: 8300000, guid: fc12851f408d3d64293215ced37cb4df, type: 3}
+  - {fileID: 8300000, guid: 0781b482e8bcd9345b6ff68545e5103e, type: 3}
   isBGMPlaying: 0
   isBGMRandom: 1
   popUpMusic: {fileID: 1814161818}

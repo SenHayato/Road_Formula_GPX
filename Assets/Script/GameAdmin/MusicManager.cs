@@ -12,7 +12,6 @@ public class MusicManager : MonoBehaviour
     [SerializeField] AudioClip[] bgmClips;
 
     [Header("BGM Condition")]
-    [SerializeField] bool isBGMPlaying = false;
     [SerializeField] bool isBGMRandom = true;
 
     [Header("UI Pop UP Music")]

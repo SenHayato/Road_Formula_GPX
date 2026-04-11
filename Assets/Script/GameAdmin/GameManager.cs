@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 using static UnityEngine.Rendering.DebugUI;
 
 public class GameManager : MonoBehaviour
@@ -25,6 +26,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] float countdown = 0; //pastikan 0
     [SerializeField] bool gameStarted = false;
     [SerializeField] float countdownValue;
+
+    [Header("Warning")]
+    [SerializeField] Camera gameCamera;
+    [SerializeField] bool playerCritical;
+    [SerializeField] Color warningColor;
+    [SerializeField] Color normalColor;
+    [SerializeField] float blinkDuration;
+    [SerializeField] Ease easeWarning;
 
     [Header("Result Screen")]
     [SerializeField] GameObject resultScreen;
@@ -54,6 +63,7 @@ public class GameManager : MonoBehaviour
         carModel = FindFirstObjectByType<CarModel>();
         uiManager = FindFirstObjectByType<UIManager>();
         playerCarActive = FindFirstObjectByType<PlayerCarActive>();
+        gameCamera = FindFirstObjectByType<Camera>();
     }
 
     void Start()
@@ -82,11 +92,8 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
     }
 
-    bool startAudio = false;
     IEnumerator StartCountdown()
     {
-        startAudio = false;
-
         while (countdown > 0)
         {
             int countdownInt = Mathf.CeilToInt(countdown);
@@ -207,11 +214,51 @@ public class GameManager : MonoBehaviour
         uiManager.lenghtText.text = gameLenght.ToString() + " M";
     }
 
+    bool wasCritical = false;
+    void PlayerIsCritical()
+    {
+        if (carModel.damagePoint < 20 || carModel.carFuel < 20f)
+        {
+            if (!wasCritical)
+            {
+                wasCritical = true;
+                StartWarning();
+            }
+            //playerCritical = true;
+        }
+        else
+        {
+            if (wasCritical)
+            {
+                StopWarning();
+                wasCritical = false;
+            }
+        }
+    }
+
+    Tween warningTween;
+    void StartWarning()
+    {
+        warningTween?.Kill();
+        warningTween = gameCamera.DOColor(warningColor, blinkDuration).SetEase(easeWarning).SetLoops(-1, LoopType.Yoyo);
+    }
+
+    void StopWarning()
+    {
+        warningTween?.Kill();
+        gameCamera.DOColor(normalColor, 0.2f);
+    }
+
     void Update()
     {
         GameOver();
         UpgradeLevel();
         ScoreCount();
+
+        if (gameStarted)
+        {
+            PlayerIsCritical();
+        }
 
         if (!gameOver)
         {

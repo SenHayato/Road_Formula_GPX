@@ -5340,7 +5340,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 181f6de87de6cb44784c6753124f8141, type: 3}
   - {fileID: 8300000, guid: fc12851f408d3d64293215ced37cb4df, type: 3}
   - {fileID: 8300000, guid: 0781b482e8bcd9345b6ff68545e5103e, type: 3}
-  isBGMPlaying: 0
   isBGMRandom: 1
   popUpMusic: {fileID: 1814161818}
   musicName: {fileID: 1888077936}
@@ -7800,6 +7799,12 @@ MonoBehaviour:
   countdown: 0
   gameStarted: 0
   countdownValue: 3
+  gameCamera: {fileID: 0}
+  playerCritical: 0
+  warningColor: {r: 1, g: 0.2924527, b: 0.2924527, a: 1}
+  normalColor: {r: 0, g: 0, b: 0, a: 1}
+  blinkDuration: 0.3
+  easeWarning: 1
   resultScreen: {fileID: 1292866987}
   uiManager: {fileID: 0}
   carModel: {fileID: 0}

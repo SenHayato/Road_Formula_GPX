@@ -17,8 +17,7 @@ public class EnemyCarActive : MonoBehaviour
 
     [Header("Enemy Status")]
     [SerializeField] bool canTurn;
-    [SerializeField] bool isExploded = false;
-    [SerializeField] bool isBumped = false;
+    [SerializeField] bool isKnocked = false;
     [SerializeField] bool canKnocked;
 
     [Header("Visual Effect")]
@@ -119,7 +118,6 @@ public class EnemyCarActive : MonoBehaviour
         }
     }
 
-    bool isKnocked = false;
     void TakeKnockBack(float knockedPower)
     {
         if (!isKnocked)

@@ -254,7 +254,6 @@ public class PlayerCarActive : MonoBehaviour
         }
     }
 
-    bool isBoostSound = false;
     void BoostMode()
     {
         if (inputScript.boostAction.triggered && carModel.BoostGauge >= carModel.BoostMaxGauge && !carModel.isBoosting)

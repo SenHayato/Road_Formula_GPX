@@ -1,3 +1,5 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class VisualEffectManager : MonoBehaviour
@@ -6,6 +8,7 @@ public class VisualEffectManager : MonoBehaviour
     [SerializeField] GameObject[] bumpVisualEffect;
     [SerializeField] GameObject[] explodeVisualEffect;
     [SerializeField] GameObject itemGetVisualEffect;
+    [SerializeField] GameObject textPopUp;
 
     public static VisualEffectManager Instance { get; private set; }
 
@@ -38,5 +41,31 @@ public class VisualEffectManager : MonoBehaviour
         int visualEffectNum = Random.Range(0, explodeVisualEffect.Length);
         spawnTransform.z = -2f;
         Instantiate(explodeVisualEffect[visualEffectNum], spawnTransform, Quaternion.identity);
+    }
+
+    public void ShowTextPop(string textToAssign, Transform spawnToPosition)
+    {
+        StartCoroutine(TextPopOut(textToAssign, spawnToPosition));
+    }
+
+    bool isSpawning = false;
+
+    IEnumerator TextPopOut(string textAssigned, Transform spawnPosition)
+    {
+        if (isSpawning) yield break;
+
+        isSpawning = true;
+
+        GameObject textPop = Instantiate(textPopUp, spawnPosition.position, Quaternion.identity);
+        TextMeshProUGUI textComponent = textPop.GetComponentInChildren<TextMeshProUGUI>();
+
+        if (textComponent != null)
+        {
+            textComponent.text = textAssigned;
+        }
+
+        yield return new WaitForSeconds(0.3f);
+        Destroy(textPop);
+        isSpawning = false;
     }
 }

@@ -7265,6 +7265,7 @@ MonoBehaviour:
   - {fileID: 467751860875805754, guid: 7c6d9bb9c8994364dbe5ba2e32dd4d13, type: 3}
   - {fileID: 2054803858064431036, guid: 500c1d6ddd48f2c4092af85e4e941eb2, type: 3}
   itemGetVisualEffect: {fileID: 3022102558446658867, guid: cd3d579a2d65b3241a1812f639db37ec, type: 3}
+  textPopUp: {fileID: 9192527225186223342, guid: fa1bcd0d5bb0a234e9bebded2188280f, type: 3}
 --- !u!1 &1394059331
 GameObject:
   m_ObjectHideFlags: 0

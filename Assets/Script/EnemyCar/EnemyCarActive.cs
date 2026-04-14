@@ -145,8 +145,8 @@ public class EnemyCarActive : MonoBehaviour
         isKnocked = false;
     }
 
-     float knockValue;
-     int direction;
+    float knockValue;
+    int direction;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
@@ -217,7 +217,7 @@ public class EnemyCarActive : MonoBehaviour
             StartCoroutine(KnockRotation());
             Vector2 knockback = new(Random.Range(-knockAxisX, knockAxisX), knockAxisY);
             rigid2d.AddForce(500f * Time.deltaTime * knockback);
-            Invoke(nameof(Explode), Random.Range(1,3));
+            Invoke(nameof(Explode), Random.Range(1, 3));
             isTakenDown = true;
             SoundManager.Instance.PlayCrashSFX(audioSource);
         }
@@ -247,6 +247,7 @@ public class EnemyCarActive : MonoBehaviour
     }
 
     int scoreToAdd;
+    //bool isScoreAppear = false;
     private void OnDestroy()
     {
         if (isKnocked || isTakenDown)
@@ -261,6 +262,7 @@ public class EnemyCarActive : MonoBehaviour
                     break;
             }
             gameManager.ScoreAdd(scoreToAdd);
+            VisualEffectManager.Instance.ShowTextPop(scoreToAdd.ToString(), this.transform);
         }
         carModel = null;
         playerCarActive = null;
